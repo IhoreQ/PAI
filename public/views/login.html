@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+    <title>Login Page - DogOut</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/02c4ba91de.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="main-container">
+
+        <div class="app-cover">
+            <div class="password-recovery-container">
+                <div class="password-recovery-header">
+                    <div class="password-recovery-close" style="visibility: hidden;">
+                    </div>
+                    <div class="password-recovery-title">
+                        <h1>Password recovery</h1>
+                    </div>
+                    <div class="password-recovery-close" onclick="turnOff()">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                </div>
+                <div class="password-recovery-inner-container">
+                    <p>Enter your email address in the box below<br>
+                        to get the link
+                        to reset your password.</p>
+                    <form action="">
+                        <input  name="email-recovery" type="text" placeholder="Email">
+                        <button class="blue-button">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="app-container">
+            <div class="login-container">
+                <div class="logo">
+                    <img src="../img/dog_logo.png" alt="" class="dog_logo">
+                    <h1 class="logo-text">DogOut</h1>
+                </div>
+                <div class="login-inner-container">
+                    <form action="" class="login-form">
+                        <div class="input-div">
+                            <i class="fa-solid fa-user"></i>
+                            <input name="email" type="text" placeholder="Email">
+                        </div>
+                        <div class="input-div">
+                            <i class="fa-solid fa-lock"></i>
+                            <input name="password" type="password" placeholder="Password">
+                        </div>
+                        <a class="forgot-password-text" onclick="turnOn()">Forgot password</a>
+                        <button class="blue-button">Log in</button>
+                        <div class="sign-up-text">
+                            Don't have an account? <a href="register.html">Sign up</a>
+                        </div>
+                    </form>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/forgot_password.js"></script>
+</body>

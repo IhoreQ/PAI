@@ -1,0 +1,308 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Dosis';
+    color: #F5C9A1;
+}
+
+.main-container {
+    width: 100vw;
+    height: 100vh;
+    background: #C3B3A6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-container {
+    width: 80vw;
+    height: 90vh;
+    background-color: #C34E08;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    box-shadow: 0px 20px 25px rgba(0, 0, 0, 0.6);
+    border-radius: 50px;
+}
+
+.app-cover {
+    background-color: rgba(0,0,0, 0.5);
+    position: fixed;
+    width: 80vw;
+    height: 90vh;
+    z-index: 2;
+    border-radius: 50px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.password-recovery-container {
+    display: flex;
+    position: fixed;
+    justify-content: flex-start ;
+    flex-direction: column;
+    width: 40vw;
+    height: 50vh;
+    background-color: #C34E08;
+    border-radius: 50px;
+    z-index: 2;
+    flex-wrap: wrap;
+}
+
+.password-recovery-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.password-recovery-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #92420F;
+    width: 20vw;
+    height: 7vh;
+    border-radius: 0 0 50px 50px;
+}
+
+.password-recovery-title h1 {
+    font-size: 2vw;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    font-weight: 600;
+}
+
+.password-recovery-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vw;
+    width: 4vw;
+    height: 4vw;
+    background-color:#134E5E;
+    border-radius: 0 50px 0 50px;
+    cursor: pointer;
+}
+
+.password-recovery-close:hover {
+    transition: 0.3s all;
+    background-color: #155769;
+}
+
+.password-recovery-inner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.password-recovery-inner-container p {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    font-size: 1.8vw;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.password-recovery-inner-container input {
+    display: flex;
+    border-radius: 50px;
+    background-color: #F5C9A1;
+    line-height: 6vh;
+    width: 100%;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding-left: 1em;
+    color: rgba(114, 42, 4, 1);
+    font-family: 'Dosis';
+    font-size: 1.5vw;
+    margin: 2rem 0 3rem 0;        
+    border: none;
+    outline: none;
+}
+
+.login-container {
+    width: 30vw;
+    height: 75vh;
+    background-color: #92420F;
+    border-radius: 50px 50px 0px 0px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-right: 5%;
+}
+
+.logo-text {
+    font-style: normal;
+    font-weight: 600;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
+    font-size: 5vw;
+}
+
+.dog_logo {
+    filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.5));
+    width: 30%;
+    height: 30%;
+}
+
+.login-inner-container {
+    display: flex;
+    justify-content: center;
+}
+
+.register-inner-container {
+    display: flex;
+    justify-content: center;
+    margin-top: -1rem;
+}
+
+.login-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 60%;
+}
+
+.register-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 60%;
+}
+
+.register-form input {
+    font-size: 1.7vw;
+    width: 100%;
+    border: none;
+    background-color: #F5C9A1;
+    font-family: 'Dosis';
+    font-weight: 500;
+    outline: none;
+    color: rgba(114, 42, 4, 1);
+    margin: 0 0 0.7em 0; 
+    border-radius: 50px;
+    line-height: 6vh;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding-left: 1em;
+    font-size: 1.5vw;
+}
+
+.blue-button {
+    border: none;
+    width: 100%;
+    border-radius: 50px;
+    background-color: #134E5E;
+    color: #F5C9A1;
+    font-family: 'Dosis';
+    font-size: 2.2vw;
+    line-height: 6vh;
+    font-weight: 600;
+    filter: drop-shadow(0px 10px 2px #092F39);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.blue-button:hover {
+    background-color: #155769;
+}
+
+.blue-button:active {
+    transform: translateY(5px);
+    filter: drop-shadow(0px 5px 2px #092F39);
+}
+
+.input-div {
+    border-radius: 50px;
+    background-color: #F5C9A1;
+    line-height: 6vh;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding-left: 1em;
+    color: rgba(114, 42, 4, 0.7);
+    font-size: 1.5vw;
+    margin: 0 0 0.7em 0;    
+}
+
+.input-div input {
+    font-size: 1.7vw;
+    width: 75%;
+    border: none;
+    background: none;
+    font-family: 'Dosis';
+    font-weight: 500;
+    outline: none;
+    color: rgba(114, 42, 4, 0.7);
+}
+
+.input-div .fa-solid {
+    font-size: 1.7vw;
+}
+
+::placeholder {
+    color: rgba(114, 42, 4, 0.7);
+}
+
+.forgot-password-text {
+    text-decoration: none;
+    color: #F5C9A1;
+    font-size: 1.3vw;
+    display: flex;
+    align-self: flex-end;
+    position: relative;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.forgot-password-text::after {
+    content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #F5C9A1;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+        
+}
+
+.forgot-password-text:hover::after {
+    transform: scaleX(1);
+}
+
+.sign-up-text {
+    text-align: center;
+    margin-top: 3vh;
+    color: #F5C9A1;
+    font-size: 1.3vw;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.sign-up-text a {
+    margin-left: 0.5vw;
+    font-weight: 600;
+    position: relative;
+    text-decoration: none;
+    color: #F5C9A1;
+}
+
+.sign-up-text a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #F5C9A1;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.sign-up-text a:hover::before {
+    transform: scaleX(1);
+}
