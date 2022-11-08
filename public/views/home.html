@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<head>
+    <title>DogOut</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <link rel="shortcut icon" href="../img/favico.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/02c4ba91de.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="main-container">
+
+        <div class="app-cover">
+        </div>
+        
+        <div class="main-app-container">
+            <div class="menu-container">
+                <div class="menu-logo">
+                    <hr class="separate-bar invisible">
+                    <div class="menu-logo-inner">
+                        <img src="../img/dog_logo.png" alt="" class="menu-dog_logo">
+                        <h1 class="menu-logo-text">DogOut</h1>
+                    </div>
+                    <hr class="separate-bar">
+                </div>
+                <div class="menu-bar">
+                    <ul class="menu-bar-list">
+                        <li class="menu-bar-element" id="home">
+                            <span>
+                                <i class="fa-solid fa-house"></i>
+                                Home
+                            </span>
+                        </li>
+                        <li class="menu-bar-element is-active" id="places">
+                            <span>
+                                <i class="fa-solid fa-tree-city"></i>
+                                Places
+                            </span>
+                        </li>
+                        <li class="menu-bar-element" id="my-doggies">
+                            <span>
+                                <i class="fa-solid fa-paw"></i>
+                                My doggies
+                            </span>
+                        </li>
+                        <li class="menu-bar-element" id="profile">
+                            <span>
+                                <i class="fa-solid fa-user"></i>
+                                Profile
+                            </span>
+                        </li>
+                        <li class="menu-bar-element" id="settings">
+                            <span>
+                                <i class="fa-solid fa-gear"></i>
+                                Settings
+                            </span>
+                        </li>
+                        <li class="menu-bar-element" id="log-out">
+                            <span>
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                Log out
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="app-content-container">
+                <div class="home-container" id="home">
+                    <div class="home-content">
+                        <div class="active-walk-container">
+                            <h1>No active walk.</h1>
+                        </div>
+                    </div>
+                    <div class="friends-container">
+                        <div class="friends-header">
+                            <hr class="friends-separate-bar invisible">
+                            <h1>Friends</h1>
+                            <hr class="friends-separate-bar">
+                        </div>
+                        <div class="friends-bar">
+
+                        </div>
+                        <div class="new-friends">
+                            Add new friends
+                        </div>
+                    </div>
+                </div>
+                <div class="places-container container-is-active" id="places">
+                    <div class="places-header">
+                        <div class="places-header-place">
+                            <h1 id="city-name">Kraków</h1>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="places-content">
+                        
+                    </div>
+                    <div class="places-footer">
+                        <div class="places-footer-ideas">
+                            <span id="places-ideas">Send your ideas about places here!</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-doggies-container" id="my-doggies">
+                    Moje psiaki
+                </div>
+                <div class="profile-container" id="profile">
+
+                </div>
+                <div class="settings-container" id="settings">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/menu-bar.js"></script>
+</body>

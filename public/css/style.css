@@ -122,6 +122,20 @@ body {
     outline: none;
 }
 
+.register-container {
+    width: 30vw;
+    height: 75vh;
+    background-color: #92420F;
+    border-radius: 50px 50px 0px 0px;
+}
+
+.register-container .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5%;
+}
+
 .login-container {
     width: 30vw;
     height: 75vh;
@@ -129,7 +143,7 @@ body {
     border-radius: 50px 50px 0px 0px;
 }
 
-.logo {
+.login-container .logo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,6 +157,7 @@ body {
     text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
     font-size: 5vw;
 }
+
 
 .dog_logo {
     filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.5));
@@ -305,4 +320,325 @@ body {
 
 .sign-up-text a:hover::before {
     transform: scaleX(1);
+}
+
+.main-app-container {
+    width: 80vw;
+    height: 90vh;
+    background-color: #C34E08;
+    display: flex;
+    box-shadow: 0px 20px 25px rgba(0, 0, 0, 0.6);
+    border-radius: 50px;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #92420F;
+    width: 20%;
+    height: 100%;
+    border-radius: 50px 0 0 50px;
+}
+
+.menu-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 15%;
+    width: 100%;
+    margin-top: 5%;
+}
+
+.menu-logo-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5% 0 0;
+    height: 100%;
+}
+
+.menu-logo-text {
+    font-style: normal;
+    font-weight: 600;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
+    font-size: 2.7vw;
+    margin: 0;
+}
+
+.menu-dog_logo {
+    filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.5));
+    width: 30%;
+}
+
+.separate-bar {
+    width: 80%;
+    height: 3px;
+    border: none;
+    background: #F5C9A1;
+    border-radius: 50px;
+    margin: 0;
+}
+
+.menu-bar-list {
+    list-style: none;
+    margin: 15% 0 0 0;
+    padding: 0;
+    width: 100%;
+}
+
+.menu-bar-element {
+    line-height: 7vh;
+    font-size: 1.5vw;
+    font-weight: 400;
+    position: relative;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+
+.menu-bar-element:hover::before {
+    display: none;
+}
+
+.menu-bar-element:hover::after {
+    display: none;
+}
+
+.menu-bar-element::before {
+    position: absolute;
+    content: "";
+    background-color: #D27940;
+    height: 0.1vh;
+    bottom: -1px;
+    left: 10%;
+    width: 80%;
+    border-radius: 50px;
+    z-index: 0;
+}
+
+.menu-bar-element:first-child::after {
+    position: absolute;
+    content: "";
+    background-color: #D27940;
+    height: 0.1vh;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    border-radius: 50px;
+    z-index: 0;
+}
+
+.menu-bar-element span {
+    margin-left: 15%;
+}
+
+.menu-bar-element:hover {
+    background-color: #ad4f14;
+}
+
+.menu-bar-element i {
+    opacity: 0.6;
+}
+
+.menu-bar-element.is-active {
+    background-color: #134E5E;
+    z-index: 1;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.menu-bar-element.is-active:hover {
+    background-color: #134E5E;
+}
+
+.menu-bar-element.is-active::before {
+    display: none;
+}
+
+.menu-bar-element.is-active::after {
+    display: none;
+}
+
+.app-content-container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100%;
+    width: 80%;
+}
+
+.home-container {
+    display: none;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.places-container {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.places-header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 10%;
+}
+
+.places-header-place {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #92420F;
+    width: 25%;
+    border-radius: 0 0 50px 50px;
+    cursor: pointer;
+    transition: 0.3s all;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.places-header-place:hover {
+    background-color: #9e4813;
+}
+
+.places-header-place h1 {
+    font-weight: 600;
+    font-size: 2vw;
+}
+
+.places-header-place i {
+    margin-top: 3%;
+    margin-left: 2%;
+}
+
+.places-content {
+    display: flex;
+    width: 100%;
+    height: 82.5%;
+}
+
+.places-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 7.5%;
+}
+
+.places-footer-ideas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #92420F;
+    font-size: 1.2vw;
+    width: 35%;
+    height: 100%;
+    border-radius: 50px 50px 0 0;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+.places-footer-ideas:hover {
+    background-color: #9e4813;
+}
+
+
+.my-doggies-container {
+    display: none;
+}
+
+.profile-container {
+    display: none;
+}
+
+.settings-container {
+    display: none;
+}
+
+.container-is-active {
+    display: flex;
+}
+
+.friends-container {
+    display: flex;
+    width: 30%;
+    height: 100%;
+    background-color: #92420F;
+    border-radius: 0 50px 50px 0;
+    flex-direction: column;
+    align-items: center;
+}
+
+.friends-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 15%;
+    width: 100%;
+    margin-top: 5%;
+}
+
+.friends-header h1 {
+    font-weight: 500;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
+    font-size: 2.5vw;
+    margin: 0;
+}
+
+.friends-separate-bar {
+    width: 80%;
+    height: 3px;
+    border: none;
+    background: #F5C9A1;
+    border-radius: 50px;
+    margin: 0;
+}
+
+.friends-bar {
+    display: flex;
+    width: 100%;
+    height: 78%;
+}
+
+.new-friends {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 8%;
+    background-color: #134E5E;
+    border-radius: 0 0 50px 0;
+    font-size: 1.5vw;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+.new-friends:hover {
+    background-color: #155769;
+}
+
+.home-content {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 100%;
+}
+
+.active-walk-container {
+    margin-top: 5%;
+}
+
+.active-walk-container h1 {
+    font-size: 2vw;
+    font-weight: 500;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
+}
+
+.invisible {
+    visibility: hidden;
 }
