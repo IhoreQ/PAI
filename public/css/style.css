@@ -6,11 +6,12 @@ body {
     margin: 0;
     font-family: 'Dosis';
     color: #F5C9A1;
+    font-size: 16px;
 }
 
 .main-container {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background: #C3B3A6;
     display: flex;
     justify-content: center;
@@ -42,11 +43,8 @@ body {
 
 .password-recovery-container {
     display: flex;
-    position: fixed;
-    justify-content: flex-start ;
+    justify-content: flex-start;
     flex-direction: column;
-    width: 40vw;
-    height: 50vh;
     background-color: #C34E08;
     border-radius: 50px;
     z-index: 2;
@@ -56,6 +54,7 @@ body {
 .password-recovery-header {
     display: flex;
     width: 100%;
+    height: 25%;
     justify-content: space-between;
 }
 
@@ -64,13 +63,13 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #92420F;
-    width: 20vw;
-    height: 7vh;
+    width: 60%;
+    height: 75%;
     border-radius: 0 0 50px 50px;
 }
 
 .password-recovery-title h1 {
-    font-size: 2vw;
+    font-size: 2.5rem;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
     font-weight: 600;
 }
@@ -79,9 +78,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5vw;
-    width: 4vw;
-    height: 4vw;
+    font-size: 2rem;
+    width: 10%;
+    height: 8vh;
     background-color:#134E5E;
     border-radius: 0 50px 0 50px;
     cursor: pointer;
@@ -95,13 +94,31 @@ body {
 .password-recovery-inner-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 75%;
+    padding: 0 5rem 5rem 5rem;
+}
+
+.recovery-blue-button {
+    border: none;
+    width: 100%;
+    border-radius: 50px;
+    background-color: #134E5E;
+    color: #F5C9A1;
+    font-family: 'Dosis';
+    font-size: 2.2rem;
+    line-height: 4rem;
+    font-weight: 600;
+    filter: drop-shadow(0px 10px 2px #092F39);
+    cursor: pointer;
+    transition: all 0.3s;
+    
 }
 
 .password-recovery-inner-container p {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
-    font-size: 1.8vw;
+    font-size: 2rem;
     text-align: center;
     margin: 1rem 0;
 }
@@ -110,23 +127,26 @@ body {
     display: flex;
     border-radius: 50px;
     background-color: #F5C9A1;
-    line-height: 6vh;
+    line-height: 3.5rem;
     width: 100%;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding-left: 1em;
     color: rgba(114, 42, 4, 1);
     font-family: 'Dosis';
-    font-size: 1.5vw;
-    margin: 2rem 0 3rem 0;        
+    font-size: 2rem;
+    margin: 1rem 0 3rem 0;        
     border: none;
     outline: none;
 }
 
 .register-container {
-    width: 30vw;
-    height: 75vh;
+    width: 50%;
+    height: 85%;
     background-color: #92420F;
     border-radius: 50px 50px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .register-container .logo {
@@ -134,35 +154,30 @@ body {
     justify-content: center;
     align-items: center;
     margin-right: 5%;
+    margin-bottom: 5%;
 }
 
 .login-container {
-    width: 30vw;
-    height: 75vh;
+    width: 50%;
+    height: 85%;
     background-color: #92420F;
     border-radius: 50px 50px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .login-container .logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
     margin-right: 5%;
+    margin-bottom: 5%;
 }
 
-.logo-text {
-    font-style: normal;
-    font-weight: 600;
-    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
-    font-size: 5vw;
-}
-
-
-.dog_logo {
+.dog-logo {
     filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.5));
-    width: 30%;
-    height: 30%;
+    width: 70%;
 }
 
 .login-inner-container {
@@ -173,26 +188,27 @@ body {
 .register-inner-container {
     display: flex;
     justify-content: center;
-    margin-top: -1rem;
 }
 
 .login-form {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 60%;
+    align-items: center;
+    width: 80%;
 }
 
 .register-form {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
-    width: 60%;
+    width: 80%;
 }
 
 .register-form input {
-    font-size: 1.7vw;
-    width: 100%;
+    font-size: 2rem;
+    width: 70%;
     border: none;
     background-color: #F5C9A1;
     font-family: 'Dosis';
@@ -204,29 +220,28 @@ body {
     line-height: 6vh;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding-left: 1em;
-    font-size: 1.5vw;
 }
 
 .blue-button {
     border: none;
-    width: 100%;
+    width: 70%;
     border-radius: 50px;
     background-color: #134E5E;
     color: #F5C9A1;
     font-family: 'Dosis';
-    font-size: 2.2vw;
-    line-height: 6vh;
+    font-size: 2.3rem;
+    line-height: 4rem;
     font-weight: 600;
     filter: drop-shadow(0px 10px 2px #092F39);
     cursor: pointer;
     transition: all 0.3s;
 }
 
-.blue-button:hover {
+.blue-button:hover, .recovery-blue-button:hover {
     background-color: #155769;
 }
 
-.blue-button:active {
+.blue-button:active, .recovery-blue-button:active {
     transform: translateY(5px);
     filter: drop-shadow(0px 5px 2px #092F39);
 }
@@ -234,41 +249,46 @@ body {
 .input-div {
     border-radius: 50px;
     background-color: #F5C9A1;
-    line-height: 6vh;
+    line-height: 3.5rem;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding-left: 1em;
     color: rgba(114, 42, 4, 0.7);
-    font-size: 1.5vw;
-    margin: 0 0 0.7em 0;    
+    font-size: 2rem;
+    margin: 0 0 0.7em 0;   
+    width: 70%; 
 }
 
 .input-div input {
-    font-size: 1.7vw;
-    width: 75%;
+    font-size: 2rem;
+    width: 70%;
     border: none;
     background: none;
     font-family: 'Dosis';
     font-weight: 500;
     outline: none;
-    color: rgba(114, 42, 4, 0.7);
+    color: rgba(114, 42, 4, 1);
 }
 
 .input-div .fa-solid {
-    font-size: 1.7vw;
+    font-size: 2rem;
 }
 
 ::placeholder {
     color: rgba(114, 42, 4, 0.7);
 }
 
+.forgot-password-text-container {
+    width: 70%;
+    margin-bottom: 2rem;
+    text-align: end;
+}
+
 .forgot-password-text {
     text-decoration: none;
     color: #F5C9A1;
-    font-size: 1.3vw;
-    display: flex;
-    align-self: flex-end;
+    font-size: 1.5rem;
     position: relative;
-    margin-bottom: 2rem;
+    
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
@@ -292,9 +312,10 @@ body {
 
 .sign-up-text {
     text-align: center;
+    width: 100%;
     margin-top: 3vh;
     color: #F5C9A1;
-    font-size: 1.3vw;
+    font-size: 1.5rem;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
@@ -358,15 +379,7 @@ body {
     height: 100%;
 }
 
-.menu-logo-text {
-    font-style: normal;
-    font-weight: 600;
-    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
-    font-size: 2.7vw;
-    margin: 0;
-}
-
-.menu-dog_logo {
+.menu-dog-logo {
     filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.5));
     width: 30%;
 }
