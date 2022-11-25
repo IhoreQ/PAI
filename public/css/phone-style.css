@@ -23,6 +23,126 @@
         font-size: 2rem;
     }
 
+    .menu-container {
+        width: 100%;
+        height: 90px;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        border-radius: 50px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+        transition: 0.5s all;
+        z-index: 2;
+        margin: 0;
+    }
+
+    .menu-bar {
+        display: none;
+    }
+
+    .menu-bar-active {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        top: 90px;
+    }
+
+    .menu-container-active {
+        height: 520px;
+    }
+
+    /* TODO wyświetlenie menu */
+
+    .menu-logo {
+        position: absolute;
+        height: 90px;
+        flex-direction: row;
+        margin: 0 0 0 5%;
+        width: calc(100% - 4rem);
+    }
+
+    .menu-logo-inner {
+        margin: 0;
+    }
+
+    .menu-dog-logo {
+        width: 200px;
+    }
+
+    .menu-burger {
+        display: block;
+        font-size: 2.5rem;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    }
+
+    .menu-bar-list {
+        margin: 0;
+        text-align: center;
+    }
+
+    .menu-bar-element span {
+        margin-left: 0;
+    }
+
+    .separate-bar {
+        display: none;
+    }
+
+    .app-content-container {
+        width: 100%;
+        height: calc(100% - 90px);
+        top: 90px;
+        left: 0;
+    }
+    
+    .home-container {
+        height: 100%;
+        flex-direction: column;
+    }
+
+    .home-content {
+        height: 88%;
+    }
+
+    .friends-container {
+        height: 12%;
+        width: 100%;
+        border-radius: 50px 50px 0 0;
+        justify-content: flex-start;
+        overflow: hidden;
+    }
+
+    .friends-header {
+        height: 100%;
+        margin-top: 0;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .friends-title i {
+        display: block;
+    }
+
+    .friends-separate-bar {
+        display: none;
+    }
+
+    .friends-bar {
+        display: none;
+    }
+
+    .new-friends {
+        display: none;
+    }
+
+    .container-is-active {
+        display: flex;
+    }
+
+    .active-walk-box {
+        width: 80%;
+    }
 }
 
 /* Phone screen */
@@ -60,4 +180,29 @@
         font-size: 1.5rem;
     }
 
+    .main-app-container {
+        border-radius: 0;
+        min-height: 100vh;
+    }
+
+    .menu-container  {
+        border-radius: 0 0 50px 50px;
+    }
+    
+    .active-walk-box {
+        width: 100%;
+    }
+
+    .active-walk-box-header {
+        padding: 0 1.5rem;
+        justify-content: space-between;
+    }
+
+    .active-walk-box-header p {
+        padding: 0;
+    }
+
+    .active-walk-symmetric-p {
+        display: none;
+    }
 }
