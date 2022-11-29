@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
     <link rel="stylesheet" href="public/css/phone-style.css" type="text/css">
+    <link rel="stylesheet" href="public/css/places-style.css" type="text/css">
     <link rel="shortcut icon" href="public/img/favico.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +15,28 @@
 <body>
     <div class="main-container">
         <div class="main-app-container">
+            <div class="app-cover">
+                <div class="app-cover-container">
+                    <div class="app-cover-header">
+                        <div class="app-cover-close invisible">
+                        </div>
+                        <div class="app-cover-title">
+                            <h1>New place idea</h1>
+                        </div>
+                        <div class="app-cover-close" onclick="turnOff()">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                    </div>
+                    <div class="app-cover-inner-container new-place-idea-form">
+                        <form action="">
+                            <input name="place-idea-city" type="text" placeholder="City">
+                            <input name="place-idea-name" type="text" placeholder="Name">
+                            <input name="place-idea-street" type="text" placeholder="Street">
+                            <button class="app-cover-blue-button">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div class="app-wrapper">
                 <div class="menu-container">
                     <div class="menu-logo">
@@ -28,7 +51,7 @@
                     </div>
                     <div class="menu-bar">
                         <ul class="menu-bar-list">
-                            <li class="menu-bar-element is-active" id="home">
+                            <li class="menu-bar-element" id="home">
                                 <span>
                                     <i class="fa-solid fa-house"></i>
                                     Home
@@ -40,16 +63,10 @@
                                     Places
                                 </span>
                             </li>
-                            <li class="menu-bar-element" id="my-doggies">
+                            <li class="menu-bar-element is-active" id="my-doggy">
                                 <span>
                                     <i class="fa-solid fa-paw"></i>
-                                    My doggies
-                                </span>
-                            </li>
-                            <li class="menu-bar-element" id="profile">
-                                <span>
-                                    <i class="fa-solid fa-user"></i>
-                                    Profile
+                                    My doggy
                                 </span>
                             </li>
                             <li class="menu-bar-element" id="settings">
@@ -58,7 +75,7 @@
                                     Settings
                                 </span>
                             </li>
-                            <li class="menu-bar-element" id="log-out">
+                            <li class="log-out-button" id="log-out">
                                 <span>
                                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                     Log out
@@ -68,7 +85,8 @@
                     </div>
                 </div>
                 <div class="app-content-container">
-                    <div class="home-container container-is-active" id="home">
+
+                    <div class="home-container" id="home">
                         <div class="home-content">
                             <div class="active-walk-header">
                                 <h1 class="active-walk-text">No active walk.</h1>
@@ -103,36 +121,157 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="places-container" id="places">
-                        <div class="places-header">
-                            <div class="places-header-place">
-                                <h1 id="city-name">Kraków</h1>
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
                         <div class="places-content">
-                            
-                        </div>
-                        <div class="places-footer">
+                            <div class="place-box" id="krakow-mlynowka">
+                                <a href="#" class="place-text-box">
+                                    Młynówka
+                                </a>
+                            </div>
+                            <div class="place-box" id="krakow-blonia">
+                                <a href="#" class="place-text-box">
+                                    Błonia
+                                </a>
+                            </div>
+                            <div class="place-box" id="krakow-lasek-wolski">
+                                <a href="#"  class="place-text-box">
+                                    Lasek Wolski
+                                </a>
+                            </div>
+                            <div class="place-box" id="krakow-park-krowoderski">
+                                <a href="#"  class="place-text-box">
+                                    Park Krowoderski
+                                </a>
+                            </div>
                             <div class="places-footer-ideas">
                                 <span id="places-ideas">Send your ideas about places here!</span>
+                            </div>                            
+                        </div>
+                    </div>
+
+                    <div class="my-doggy-container container-is-active" id="my-doggy">
+                        <div class="new-dog-content" id="no-dog">
+                            <div class="new-dog-info">
+                                <p>You have not added your doggo to the app yet.</p>
+                                <button class="blue-button" onclick="showAddingPage()">Do it now!</button>
+                            </div>
+                            <div class="new-dog-add-page">
+                                <div class="new-dog-paw">
+                                    <i class="fa-solid fa-paw"></i>
+                                </div>
+                                <h1>Adding form</h1>
+                                <form action="" class="new-dog-form">
+                                    <input type="text" name="new-dog-name" placeholder="Name">
+                                    <input type="number" name="new-dog-age" placeholder="Age">
+                                    <input type="text" name="new-dog-breed" placeholder="Breed">
+                                    <select name="new-dog-gender" id="">
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                    <select name="new-dog-size">
+                                        <option value="small">Small</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="big">Big</option>
+                                    </select>
+                                    <textarea name="new-dog-description" class="new-dog-textarea" cols="30" rows="10" placeholder="Description"></textarea>
+                                    <input id="file-upload" type="file" hidden>
+                                    <label for="file-upload" class="dog-photo-upload">
+                                        <i class="fa fa-cloud-upload"></i>
+                                        <span id="file-chosen">Upload dog photo</span>
+                                    </label>
+                                    <button class="blue-button">Add doggy</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="my-doggy-content" id="dog">
+                            <div class="doggy-name-container">
+                                <h1 id="dog-name">Binka</h1>
+                            </div>
+                            <div class="doggy-info-container">
+                                <div class="left-dog-info">
+                                    <div class="dog-size-box">
+                                        <div class="upper-box">
+                                            Size
+                                        </div>
+                                        <div class="lower-box">
+                                            <p id="dog-size">Small</p>
+                                        </div>
+                                    </div>
+                                    <div class="dog-breed-box">
+                                        <div class="upper-box">
+                                            Breed
+                                        </div>
+                                        <div class="lower-box">
+                                            <p id="dog-breed">Mongrel</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dog-photo-box">
+                                    <div class="dog-photo"></div>
+                                </div>
+                                <div class="right-dog-info">
+                                    <div class="dog-age-box">
+                                        <div class="upper-box">
+                                            Age
+                                        </div>
+                                        <div class="lower-box">
+                                            <p id="dog-age">12</p>
+                                        </div>
+                                    </div>
+                                    <div class="dog-gender-box">
+                                        <div class="upper-box">
+                                            Gender
+                                        </div>
+                                        <div class="lower-box">
+                                            <p id="dog-gender">Female</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doggy-description-container">
+                                <div class="description-box">
+                                    <div class="description-upper-box">
+                                        Description
+                                    </div>
+                                    <div class="description-lower-box">
+                                        <p id="dog-description">Binia to piękny piesek kochający czekoladę. 🎂</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="my-doggies-container" id="my-doggies">
-                        Moje psiaki
-                    </div>
-                    <div class="profile-container" id="profile">
-    
-                    </div>
+
                     <div class="settings-container" id="settings">
-    
+                        <div class="settings-content">
+                            <div class="password-change-container">
+                                <h1>Change password</h1>
+                                <hr class="separate-bar">
+                                <form action="" class="password-change-form">
+                                    <input type="text" placeholder="Current password">
+                                    <input type="text" placeholder="New password">
+                                    <input type="text" placeholder="Repeat new password">
+                                    <button class="blue-button">Change</button>
+                                </form>
+                            </div>
+                            <div class="city-change-container">
+                                <h1>Change city</h1>
+                                <hr class="separate-bar">
+                                <form action="" class="city-change-form">
+                                    <select name="city-select" id="">
+                                        <option value="krakow">Kraków</option>
+                                    </select>
+                                    <button class="blue-button">Change</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 
     <script src="public/js/menu-bar.js"></script>
-    <script src="public/js/phone-menu-bar.js"></script>
+    <script src="public/js/cover-functions.js"></script>
 </body>

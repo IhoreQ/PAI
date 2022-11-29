@@ -19,7 +19,7 @@
         height: 700px;
     }
 
-    .password-recovery-title h1 {
+    .app-cover-title h1 {
         font-size: 2rem;
     }
 
@@ -33,7 +33,7 @@
         border-radius: 50px;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
         transition: 0.5s all;
-        z-index: 2;
+        z-index: 3;
         margin: 0;
     }
 
@@ -49,10 +49,8 @@
     }
 
     .menu-container-active {
-        height: 520px;
+        height: 450px;
     }
-
-    /* TODO wyświetlenie menu */
 
     .menu-logo {
         position: absolute;
@@ -81,7 +79,7 @@
         text-align: center;
     }
 
-    .menu-bar-element span {
+    .menu-bar-element span, .log-out-button span {
         margin-left: 0;
     }
 
@@ -143,6 +141,50 @@
     .active-walk-box {
         width: 80%;
     }
+
+    .places-footer-ideas {
+        width: 75%;
+    }
+
+    .new-dog-paw {
+        font-size: 40rem;
+    }
+    
+    .doggy-name-container {
+        margin-bottom: 1rem;
+    }
+
+    .doggy-info-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 70%;
+    }
+
+    .left-dog-info, .right-dog-info {
+        flex-direction: row;
+        width: 100%;
+        height: 25%;
+    }
+
+    .dog-photo-box {
+        order: -1;
+        margin-bottom: 1rem;
+    }
+
+    .left-dog-info, .right-dog-info {
+        margin-bottom: 1rem;
+    }
+    
+    .dog-size-box, .dog-age-box, .dog-breed-box, .dog-gender-box {
+        width: 40%;
+        height: 100%;
+    }
+
+    .doggy-description-container {
+        height: 20%;
+        margin-bottom: 1rem;
+    }
 }
 
 /* Phone screen */
@@ -166,17 +208,17 @@
         min-height: 100vh;
     }
 
-    .password-recovery-title h1 {
+    .app-cover-title h1 {
         font-size: 1.5rem;
     }
 
-    .password-recovery-close {
+    .app-cover-close {
         width: 60px;
         height: 60px;
         font-size: 1.5rem;
     }
 
-    .password-recovery-inner-container p {
+    .app-cover-inner-container p {
         font-size: 1.5rem;
     }
 
@@ -186,7 +228,7 @@
     }
 
     .menu-container  {
-        border-radius: 0 0 50px 50px;
+        border-radius: 0;
     }
     
     .active-walk-box {
@@ -204,5 +246,29 @@
 
     .active-walk-symmetric-p {
         display: none;
+    }
+
+    .places-footer-ideas {
+        width: 100%;
+    }
+
+    .password-change-form input, .password-change-form .blue-button, .city-change-form select, .city-change-form .blue-button {
+        width: 100%;
+    }
+
+    .new-dog-form input, .new-dog-form select, .new-dog-form .blue-button, .new-dog-form textarea, .new-dog-form label {
+        width: 90%;
+    }
+
+    .doggy-name-container {
+        width: 100%;
+    }
+
+    .dog-photo-box {
+        width: 100%;
+    }
+
+    .description-box {
+        width: 90%;
     }
 }
