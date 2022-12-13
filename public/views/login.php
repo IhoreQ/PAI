@@ -42,19 +42,28 @@
                     <div class="logo">
                         <img src="public/img/dog-logo.png" alt="" class="dog-logo">
                     </div>
-                        <form action="" class="login-form">
+                        <form action="login" method="POST" class="login-form">
+                        <div class="login-message">
+                        <?php
+                        if(isset($messages)) {
+                            foreach($messages as $message) {
+                                echo $message;
+                            }
+                        }
+                        ?>
+                        </div>
                             <div class="input-div">
                                 <i class="fa-solid fa-user"></i>
-                                <input name="email" type="text" placeholder="Email">
+                                <input name="email" type="text" placeholder="Email" required>
                             </div>
                             <div class="input-div">
                                 <i class="fa-solid fa-lock"></i>
-                                <input name="password" type="password" placeholder="Password">
+                                <input name="password" type="password" placeholder="Password" required>
                             </div>
                             <div class="forgot-password-text-container">
                                 <a class="forgot-password-text" onclick="turnOn()">Forgot password</a>
                             </div>
-                            <button class="blue-button">Log in</button>
+                            <button type="submit" class="blue-button">Log in</button>
                             <div class="sign-up-text">
                                 Don't have an account? <a href="register">Sign up</a>
                             </div>

@@ -79,7 +79,7 @@
         text-align: center;
     }
 
-    .menu-bar-element span, .log-out-button span {
+    .menu-bar-element a, .log-out-button a {
         margin-left: 0;
     }
 
@@ -185,6 +185,11 @@
         height: 20%;
         margin-bottom: 1rem;
     }
+
+    .login-message {
+        font-size: 1.3rem;  
+        top: -7%;
+    }
 }
 
 /* Phone screen */
@@ -270,5 +275,9 @@
 
     .description-box {
         width: 90%;
+    }
+
+    .login-message {
+        font-size: 1rem;
     }
 }

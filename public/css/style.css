@@ -101,12 +101,39 @@ input, select {
 }
 
 .login-form {
+    position: relative;
     max-width: 100%;
     width: 400px;
 } 
 
+.login-message {
+    position: absolute;
+    top: -9%;
+    width: 100%;
+    text-align: center;
+    transform: translateY(-9%);
+    color: #F5C9A1;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.adding-dog-message {
+    position: absolute;
+    top: -5%;
+    width: 100%;
+    text-align: center;
+    transform: translateY(-9%);
+    color: #F5C9A1;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
 .blue-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
+    text-decoration: none;
     width: 100%;
     border-radius: 50px;
     background-color: #134E5E;
@@ -447,7 +474,6 @@ input, select {
 }
 
 .menu-bar-element, .log-out-button {
-    padding: 1.2rem 0;
     font-size: 1.7rem;
     font-weight: 400;
     position: relative;
@@ -487,8 +513,14 @@ input, select {
     z-index: 0;
 }
 
-.menu-bar-element span, .log-out-button span {
+.menu-bar-element a, .log-out-button a {
+    text-decoration: none;
+    color: #F5C9A1;
+    display: block;
     margin-left: 15%;
+    height: 100%;
+    width: 100%;
+    padding: 1.2rem 0;
 }
 
 .menu-bar-element:hover, .log-out-button:hover {
@@ -655,7 +687,7 @@ input, select {
 }
 
 .new-dog-add-page {
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -687,6 +719,7 @@ input, select {
 }
 
 .new-dog-form {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;

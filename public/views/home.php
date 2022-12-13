@@ -52,41 +52,41 @@
                     <div class="menu-bar">
                         <ul class="menu-bar-list">
                             <li class="menu-bar-element" id="home">
-                                <span>
+                                <a href="#home">
                                     <i class="fa-solid fa-house"></i>
                                     Home
-                                </span>
+                                </a>
                             </li>
                             <li class="menu-bar-element" id="places">
-                                <span>
+                                <a href="#places">
                                     <i class="fa-solid fa-tree-city"></i>
                                     Places
-                                </span>
+                                </a>
                             </li>
-                            <li class="menu-bar-element is-active" id="my-doggy">
-                                <span>
+                            <li class="menu-bar-element" id="my-doggy">
+                                <a href="#my-doggy">
                                     <i class="fa-solid fa-paw"></i>
                                     My doggy
-                                </span>
+                                </a>
                             </li>
                             <li class="menu-bar-element" id="settings">
-                                <span>
+                                <a href="#settings">
                                     <i class="fa-solid fa-gear"></i>
                                     Settings
-                                </span>
+                                </a>
                             </li>
                             <li class="log-out-button" id="log-out">
-                                <span>
+                                <a href="login">
                                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                     Log out
-                                </span>
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="app-content-container">
 
-                    <div class="home-container" id="home">
+                    <div class="home-container" id="home-container">
                         <div class="home-content">
                             <div class="active-walk-header">
                                 <h1 class="active-walk-text">No active walk.</h1>
@@ -122,7 +122,7 @@
                         </div>
                     </div>
 
-                    <div class="places-container" id="places">
+                    <div class="places-container" id="places-container">
                         <div class="places-content">
                             <div class="place-box" id="krakow-mlynowka">
                                 <a href="#" class="place-text-box">
@@ -150,18 +150,27 @@
                         </div>
                     </div>
 
-                    <div class="my-doggy-container container-is-active" id="my-doggy">
+                    <div class="my-doggy-container" id="my-doggy-container">
                         <div class="new-dog-content" id="no-dog">
-                            <div class="new-dog-info">
+                            <!-- <div class="new-dog-info">
                                 <p>You have not added your doggo to the app yet.</p>
-                                <button class="blue-button" onclick="showAddingPage()">Do it now!</button>
-                            </div>
-                            <div class="new-dog-add-page">
+                                <a onclick="showAddingPage()" class="blue-button" href="#my-doggy-form">Do it now!</a>
+                            </div> -->
+                            <div class="new-dog-add-page" id="my-doggy-form">
                                 <div class="new-dog-paw">
                                     <i class="fa-solid fa-paw"></i>
                                 </div>
                                 <h1>Adding form</h1>
-                                <form action="" class="new-dog-form">
+                                <form action="addDog" class="new-dog-form" method="POST" enctype="multipart/form-data">
+                                    <div class="adding-dog-message">
+                                        <?php
+                                        if(isset($messages)) {
+                                            foreach($messages as $message) {
+                                                echo $message;
+                                            }
+                                        }
+                                        ?>
+                                    </div>
                                     <input type="text" name="new-dog-name" placeholder="Name">
                                     <input type="number" name="new-dog-age" placeholder="Age">
                                     <input type="text" name="new-dog-breed" placeholder="Breed">
@@ -175,16 +184,16 @@
                                         <option value="big">Big</option>
                                     </select>
                                     <textarea name="new-dog-description" class="new-dog-textarea" cols="30" rows="10" placeholder="Description"></textarea>
-                                    <input id="file-upload" type="file" hidden>
+                                    <input id="file-upload" type="file" name="new-dog-file" hidden>
                                     <label for="file-upload" class="dog-photo-upload">
                                         <i class="fa fa-cloud-upload"></i>
                                         <span id="file-chosen">Upload dog photo</span>
                                     </label>
-                                    <button class="blue-button">Add doggy</button>
+                                    <button type="submit" class="blue-button">Add doggy</button>
                                 </form>
                             </div>
                         </div>
-                        <div class="my-doggy-content" id="dog">
+                        <div class="my-doggy-content" id="my-doggy-content-container">
                             <div class="doggy-name-container">
                                 <h1 id="dog-name">Binka</h1>
                             </div>
@@ -242,7 +251,7 @@
                         </div>
                     </div>
 
-                    <div class="settings-container" id="settings">
+                    <div class="settings-container" id="settings-container">
                         <div class="settings-content">
                             <div class="password-change-container">
                                 <h1>Change password</h1>
@@ -274,4 +283,5 @@
 
     <script src="public/js/menu-bar.js"></script>
     <script src="public/js/cover-functions.js"></script>
+    <script src="public/js/content-saver.js"></script>
 </body>
