@@ -171,17 +171,13 @@
                                         }
                                         ?>
                                     </div>
-                                    <input type="text" name="new-dog-name" placeholder="Name">
-                                    <input type="number" name="new-dog-age" placeholder="Age">
-                                    <input type="text" name="new-dog-breed" placeholder="Breed">
+                                    <input type="text" name="new-dog-name" placeholder="Name" required>
+                                    <input type="number" min="1" name="new-dog-age" placeholder="Age" required>
+                                    <select name="new-dog-breed" id="">
+                                    </select>
                                     <select name="new-dog-gender" id="">
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
-                                    </select>
-                                    <select name="new-dog-size">
-                                        <option value="small">Small</option>
-                                        <option value="medium">Medium</option>
-                                        <option value="big">Big</option>
                                     </select>
                                     <textarea name="new-dog-description" class="new-dog-textarea" cols="30" rows="10" placeholder="Description"></textarea>
                                     <input id="file-upload" type="file" name="new-dog-file" hidden>

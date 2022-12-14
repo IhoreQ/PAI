@@ -2,6 +2,7 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Doggy.php';
+require_once __DIR__.'/../repository/DoggyRepository.php';
 
 class DogInfoController extends AppController {
 
@@ -10,6 +11,12 @@ class DogInfoController extends AppController {
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
     private $messages = [];
+    private $doggyRepository;
+
+    public function __construct() {
+        parent::__construct();
+        $this->doggyRepository = new DoggyRepository();
+    }
 
     public function addDog() {
 
