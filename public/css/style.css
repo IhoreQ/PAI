@@ -36,6 +36,10 @@ input, select {
     font-family: 'Dosis';
 }
 
+.no-valid {
+    color: #ec1c64 !important;
+}
+
 .main-container {
     width: 100%;
     min-height: 100vh;
@@ -106,7 +110,7 @@ input, select {
     width: 400px;
 } 
 
-.login-message {
+.login-message, .register-message {
     position: absolute;
     top: -9%;
     width: 100%;
@@ -115,6 +119,11 @@ input, select {
     color: #F5C9A1;
     font-size: 1.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.register-message {
+    top: -6%;
+    font-size: 1.3rem;
 }
 
 .adding-dog-message {
@@ -375,6 +384,7 @@ input, select {
 /* Register page */
 
 .register-form {
+    position: relative;
     max-width: 100%;
     width: 400px;
 }
@@ -664,7 +674,7 @@ input, select {
 .new-dog-content {
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
@@ -870,7 +880,7 @@ input, select {
 }
 
 .dog-photo {
-    background: url('/public/img/dog-photo.jpg') no-repeat center;
+    background: no-repeat center;
     background-size: 350px;
     width: 350px;
     height: 350px;

@@ -3,6 +3,8 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Doggy.php';
 require_once __DIR__.'/../repository/DoggyRepository.php';
+require_once __DIR__.'/../repository/UserRepository.php';
+require_once __DIR__.'/../repository/CityRepository.php';
 
 class DogInfoController extends AppController {
 
@@ -20,21 +22,34 @@ class DogInfoController extends AppController {
 
     public function addDog() {
 
-        if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
+        if (!$this->isPost()) {
+            return $this->render("home");
+        }
+
+        if (is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file']) && !$this->hasDog()) {
+
+            $nameRegex = "/^(?=.{1,256}$)[A-ZĆŁŚŻŹa-ząćęńóśżź\\p{L}]+['\-]?[A-ZĆŁŚŻŹa-ząćęńóśżź]+/";
+
+            if (!preg_match($nameRegex, $_POST['new-dog-name'])) {
+                return $this->render("home", ['messages' => ["Name is incorrect!"]]);
+            }
+
+            //$doggyName = ucfirst(strtolower($_POST['new-dog-name'])); // JAKBY NIE DZIAŁAŁO TO PONIŻEJ
+            $doggyName = $_POST['new-dog-name'];
 
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            $doggy = new Doggy($_POST['new-dog-name'], $_POST['new-dog-age'],
+            $doggy = new Doggy($doggyName, $_POST['new-dog-age'],
                                 $_POST['new-dog-breed'], $_POST['new-dog-gender'],
-                                $_POST['new-dog-size'], $_POST['new-dog-description'], $_POST['new-dog-file']);
+                                $_POST['new-dog-size'], $_POST['new-dog-description'], $_FILES['file']['name']);
 
-            return $this->render("home", ['messages' => $this->messages]);
+            $this->doggyRepository->addDoggy($doggy);
         }
 
-        $this->render("home", ['messages' => $this->messages]);
+        return $this->render("home", ['messages' => $this->messages]);
     }
 
     private function validate(array $file): bool {
@@ -50,5 +65,30 @@ class DogInfoController extends AppController {
         }
 
         return true;
+    }
+
+    private function hasDog(): bool {
+        $crypter = new Crypter();
+        $user_id = $crypter->decryptUserID($_COOKIE['user_enabled']);
+
+
+        $userRepository = new UserRepository();
+
+        if ($userRepository->hasDog($user_id)) {
+            $this->messages[] = "You already have a doggy!";
+            return true;
+        }
+
+        return false;
+    }
+
+    public function getUserDogPhoto() {
+        $this->doggyRepository->getUserDogPhoto();
+        http_response_code(200);
+    }
+
+    public function getIfUserHasDog() {
+        $this->doggyRepository->getIfUserHasDog();
+        http_response_code(150);
     }
 }

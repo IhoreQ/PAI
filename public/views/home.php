@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+    if (!isset($_COOKIE["user_enabled"])) {
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/login");
+    }
+?>
 <head>
     <title>DogOut</title>
     <meta charset="UTF-8">
@@ -166,21 +172,27 @@
                                         <?php
                                         if(isset($messages)) {
                                             foreach($messages as $message) {
-                                                echo $message;
+                                                   echo $message;
                                             }
                                         }
                                         ?>
                                     </div>
                                     <input type="text" name="new-dog-name" placeholder="Name" required>
-                                    <input type="number" min="1" name="new-dog-age" placeholder="Age" required>
+                                    <input type="number" min="1" max="20" name="new-dog-age" placeholder="Age" required>
                                     <select name="new-dog-breed" id="">
+                                        <?php
+                                            $tempDoggyRepository = new DoggyRepository();
+                                            $doggies = $tempDoggyRepository->getBreeds();
+                                            foreach ($doggies as $row) { ?>
+                                        <option value="<?php echo $row['name']?>"><?php echo $row['name']?></option>
+                                    <?php }?>
                                     </select>
                                     <select name="new-dog-gender" id="">
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                     </select>
                                     <textarea name="new-dog-description" class="new-dog-textarea" cols="30" rows="10" placeholder="Description"></textarea>
-                                    <input id="file-upload" type="file" name="new-dog-file" hidden>
+                                    <input id="file-upload" type="file" name="file" hidden>
                                     <label for="file-upload" class="dog-photo-upload">
                                         <i class="fa fa-cloud-upload"></i>
                                         <span id="file-chosen">Upload dog photo</span>
@@ -190,8 +202,15 @@
                             </div>
                         </div>
                         <div class="my-doggy-content" id="my-doggy-content-container">
+                            <?php
+                                $myDoggy = $tempDoggyRepository->getDoggy();
+
+                                if (!$myDoggy) {
+                                    $myDoggy = new Doggy("", 1, "", "", "", "", "");
+                                }
+                            ?>
                             <div class="doggy-name-container">
-                                <h1 id="dog-name">Binka</h1>
+                                <h1 id="dog-name"><?= $myDoggy->getName() ?></h1>
                             </div>
                             <div class="doggy-info-container">
                                 <div class="left-dog-info">
@@ -200,7 +219,7 @@
                                             Size
                                         </div>
                                         <div class="lower-box">
-                                            <p id="dog-size">Small</p>
+                                            <p id="dog-size"><?= $myDoggy->getSize() ?></p>
                                         </div>
                                     </div>
                                     <div class="dog-breed-box">
@@ -208,12 +227,13 @@
                                             Breed
                                         </div>
                                         <div class="lower-box">
-                                            <p id="dog-breed">Mongrel</p>
+                                            <p id="dog-breed"><?= $myDoggy->getBreed() ?></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="dog-photo-box">
-                                    <div class="dog-photo"></div>
+                                    <div class="dog-photo">
+                                    </div>
                                 </div>
                                 <div class="right-dog-info">
                                     <div class="dog-age-box">
@@ -221,7 +241,7 @@
                                             Age
                                         </div>
                                         <div class="lower-box">
-                                            <p id="dog-age">12</p>
+                                            <p id="dog-age"><?= $myDoggy->getAge() ?></p>
                                         </div>
                                     </div>
                                     <div class="dog-gender-box">
@@ -229,7 +249,7 @@
                                             Gender
                                         </div>
                                         <div class="lower-box">
-                                            <p id="dog-gender">Female</p>
+                                            <p id="dog-gender"><?= $myDoggy->getGender() ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -240,7 +260,7 @@
                                         Description
                                     </div>
                                     <div class="description-lower-box">
-                                        <p id="dog-description">Binia to piękny piesek kochający czekoladę. 🎂</p>
+                                        <p id="dog-description"><?= $myDoggy->getDescription() ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -264,7 +284,12 @@
                                 <hr class="separate-bar">
                                 <form action="" class="city-change-form">
                                     <select name="city-select" id="">
-                                        <option value="krakow">Kraków</option>
+                                        <?php
+                                        $cityRepository = new CityRepository();
+                                        $cities = $cityRepository->getCities();
+                                        foreach ($cities as $row) { ?>
+                                            <option value="<?php echo $row['name']?>"><?php echo $row['name']?></option>
+                                        <?php }?>
                                     </select>
                                     <button class="blue-button">Change</button>
                                 </form>
@@ -280,4 +305,6 @@
     <script src="public/js/menu-bar.js"></script>
     <script src="public/js/cover-functions.js"></script>
     <script src="public/js/content-saver.js"></script>
+    <script src="public/js/log-out.js"></script>
+    <script src="public/js/dog-info.js"></script>
 </body>

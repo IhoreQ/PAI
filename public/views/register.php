@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+    if (isset($_COOKIE["user_enabled"])) {
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/home");
+    }
+?>
 <head>
     <title>Register Page - DogOut</title>
     <meta charset="UTF-8">
@@ -19,12 +25,21 @@
                     <div class="logo">
                         <img src="public/img/dog-logo.png" alt="" class="dog-logo">
                     </div>
-                    <form action="" class="register-form">
-                        <input name="name" type="text" placeholder="Name">
-                        <input name="surname" type="text" placeholder="Surname">
-                        <input name="email" type="text" placeholder="Email">
-                        <input name="password" type="password" placeholder="Password">
-                        <button class="blue-button">Sign up</button>
+                    <form action="register" method="POST" class="register-form">
+                        <div class="register-message">
+                            <?php
+                            if(isset($messages)) {
+                                foreach($messages as $message) {
+                                    echo $message;
+                                }
+                            }
+                            ?>
+                        </div>
+                        <input name="name" type="text" placeholder="Name" required>
+                        <input name="surname" type="text" placeholder="Surname" required>
+                        <input name="email" type="text" placeholder="Email" required>
+                        <input name="password" type="password" placeholder="Password" required>
+                        <button type="submit" class="blue-button">Sign up</button>
                         <div class="sign-up-text">
                             Already have an account? <a href="login">Sign in</a>
                         </div>
@@ -33,4 +48,5 @@
             </div>
         </div>
     </div>
+    <script src="public/js/user-validation.js"></script>
 </body>

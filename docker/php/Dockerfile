@@ -24,6 +24,9 @@ ENV PHP_EXTENSIONS \
     pgsql \
     pdo_pgsql
 
+USER root
+RUN chmod 777 /tmp
+
 RUN apk add --no-cache --virtual .build-deps $BUILD_DEPS \
     && docker-php-ext-configure gd --with-jpeg \
     && docker-php-ext-install -j "$(nproc)" $PHP_EXTENSIONS \

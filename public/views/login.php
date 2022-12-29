@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+    if (isset($_COOKIE["user_enabled"])) {
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/home");
+    }
+?>
 <head>
     <title>Login Page - DogOut</title>
     <meta charset="UTF-8">

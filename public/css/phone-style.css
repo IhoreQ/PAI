@@ -186,7 +186,7 @@
         margin-bottom: 1rem;
     }
 
-    .login-message {
+    .login-message, .register-message {
         font-size: 1.3rem;  
         top: -7%;
     }
@@ -277,7 +277,7 @@
         width: 90%;
     }
 
-    .login-message {
+    .login-message, .register-message {
         font-size: 1rem;
     }
 }
