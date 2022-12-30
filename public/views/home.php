@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <?php
-    if (!isset($_COOKIE["user_enabled"])) {
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/login");
-    }
-
+    include('is-user-enabled.php');
     include('delete-chosen-place.php');
 ?>
 <head>
@@ -132,22 +128,22 @@
                     <div class="places-container" id="places-container">
                         <div class="places-content">
                             <div class="place-box" id="krakow-mlynowka">
-                                <a href="#" class="place-text-box">
+                                <a class="place-text-box">
                                     Młynówka
                                 </a>
                             </div>
                             <div class="place-box" id="krakow-blonia">
-                                <a href="#" class="place-text-box">
+                                <a class="place-text-box">
                                     Błonia
                                 </a>
                             </div>
                             <div class="place-box" id="krakow-lasek-wolski">
-                                <a href="#"  class="place-text-box">
+                                <a class="place-text-box">
                                     Lasek Wolski
                                 </a>
                             </div>
                             <div class="place-box" id="krakow-park-krowoderski">
-                                <a href="#"  class="place-text-box">
+                                <a class="place-text-box">
                                     Park Krowoderski
                                 </a>
                             </div>

@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <?php
-if (!isset($_COOKIE["user_enabled"])) {
-    $url = "http://$_SERVER[HTTP_HOST]";
-    header("Location: {$url}/login");
-}
+    include('is-user-enabled.php');
+    include('is-chosen-place.php');
 ?>
 <head>
-    <title>Login Page - DogOut</title>
+    <title>Time for a walk! - DogOut</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
@@ -22,14 +20,14 @@ if (!isset($_COOKIE["user_enabled"])) {
     <div class="app-container">
         <div class="place-container">
             <?php 
-                // TODO pobieranie danych o miejscu z ID place'a
-                // Porównanie w bazie z nazwą z id z diva
+                $placeRep = new PlaceRepository();
+                $place = $placeRep->getPlace();
             ?>
             <div class="place-header">
                 <div class="place-return-box invisible">
                 </div>
                 <div class="place-name">
-                    Błonia
+                    <?= $place->getName() ?>
                 </div>
                 <div class="place-return-box">
                     <a href="home">
@@ -52,15 +50,22 @@ if (!isset($_COOKIE["user_enabled"])) {
                         </ul>    
 
                         <?php 
-                            // Foreach po psach tutaj
-                        ?>
+                            $dogs = $placeRep->getDogsHere();
+                            foreach ($dogs as $dog) {?>
                         <ul class="dog-list">
-                            <li>Binia</li>
-                            <li>Mongrel</li>
-                            <li>Small</li>
-                            <li>12</li>
-                            <li>Female</li>
-                        </ul>                        
+                            <li><?php echo $dog['dog_name']?></li>
+                            <li><?php echo $dog['dog_breed']?></li>
+                            <li><?php echo $dog['dog_size']?></li>
+                            <li><?php echo $dog['age']?></li>
+                            <li><?php
+                                if ($dog['gender'] == 1) {
+                                    echo "Male";
+                                } else {
+                                    echo "Female";
+                                } ?>
+                            </li>
+                        </ul>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
