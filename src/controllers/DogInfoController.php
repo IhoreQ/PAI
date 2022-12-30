@@ -1,10 +1,12 @@
 <?php
 
 require_once 'AppController.php';
+require_once 'WalkController.php';
 require_once __DIR__.'/../models/Doggy.php';
 require_once __DIR__.'/../repository/DoggyRepository.php';
 require_once __DIR__.'/../repository/UserRepository.php';
 require_once __DIR__.'/../repository/CityRepository.php';
+require_once __DIR__.'/../repository/PlaceRepository.php';
 
 class DogInfoController extends AppController {
 

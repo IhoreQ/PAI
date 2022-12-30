@@ -4,6 +4,8 @@
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/login");
     }
+
+    include('delete-chosen-place.php');
 ?>
 <head>
     <title>DogOut</title>
@@ -120,7 +122,6 @@
                                 <hr class="friends-separate-bar">
                             </div>
                             <div class="friends-bar">
-                                <!-- TODO dodać friendsów jako ul > li -->
                             </div>
                             <div class="new-friends">
                                 Add new friends
@@ -307,4 +308,5 @@
     <script src="public/js/content-saver.js"></script>
     <script src="public/js/log-out.js"></script>
     <script src="public/js/dog-info.js"></script>
+    <script src="public/js/place-selector.js"></script>
 </body>

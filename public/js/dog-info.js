@@ -16,7 +16,7 @@ function hasDog() {
             userHasDog = false;
             newDoggyContent.style.display = "flex";
         }
-    }))
+    }));
 }
 
 function getDogPhoto() {
