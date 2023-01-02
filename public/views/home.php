@@ -17,6 +17,9 @@
     <script src="https://kit.fontawesome.com/02c4ba91de.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="load-cover">
+        <div hidden id="spinner"></div>
+    </div>
     <div class="main-container">
         <div class="main-app-container">
             <div class="app-cover">
@@ -32,11 +35,11 @@
                         </div>
                     </div>
                     <div class="app-cover-inner-container new-place-idea-form">
-                        <form action="">
-                            <input name="place-idea-city" type="text" placeholder="City">
-                            <input name="place-idea-name" type="text" placeholder="Name">
-                            <input name="place-idea-street" type="text" placeholder="Street">
-                            <button class="app-cover-blue-button">Send</button>
+                        <form action="newPlaceIdea" method="POST">
+                            <input name="place-idea-city" type="text" placeholder="City" required>
+                            <input name="place-idea-name" type="text" placeholder="Name" required>
+                            <input name="place-idea-street" type="text" placeholder="Street" required>
+                            <button type="submit" class="app-cover-blue-button">Send</button>
                         </form>
                     </div>
                 </div>
@@ -93,14 +96,24 @@
                     <div class="home-container" id="home-container">
                         <div class="home-content">
                             <div class="active-walk-header">
-                                <h1 class="active-walk-text">No active walk.</h1>
+                                <h1 class="active-walk-text"></h1>
                             </div>
                             <div class="active-walk-container">
+                                <?php
+                                    $placeRep = new PlaceRepository();
+
+                                    $walk = $placeRep->getActiveWalk();
+                                    if (!$walk) {
+                                        $walk = new Walk("", 1, "");
+                                        $walk->setPlaceName("");
+                                        $walk->setTimeLeft("");
+                                    }
+                                ?>
                                 <div class="active-walk-box">
                                         <div class="active-walk-box-header">
                                             <p class="invisible active-walk-symmetric-p">Ends in: <span class="active-walk-left-time">59:47</span></p>
-                                            <h1 class="active-walk-name">Błonia - Kraków</h1>
-                                            <p>Ends in: <span class="active-walk-left-time">59:47</span></p>
+                                            <h1 class="active-walk-name"><?= $walk->getPlaceName() ?></h1>
+                                            <p class="active-walk-p">Ends in: <span class="active-walk-left-time proper-time"><?= $walk->getTimeLeft() ?></span></p>
                                         </div>
                                         <div class="active-walk-finish">
                                             <h1>Finish</h1>
@@ -305,4 +318,5 @@
     <script src="public/js/log-out.js"></script>
     <script src="public/js/dog-info.js"></script>
     <script src="public/js/place-selector.js"></script>
+    <script src="public/js/active-walk.js"></script>
 </body>

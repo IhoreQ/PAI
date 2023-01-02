@@ -35,6 +35,15 @@
                     </a>
                 </div>
             </div>
+            <div class="walk-message">
+                <?php
+                if(isset($messages)) {
+                    foreach($messages as $message) {
+                        echo $message;
+                    }
+                }
+                ?>
+            </div>
             <div class="place-dogs-container">
                 <div class="dog-count-header">
                     Dogs here:
@@ -74,9 +83,9 @@
                     <div class="walk-box">
                         <label class="walk-time">Approximate time of a walk:</label>
                         <select name="walk-time" class="walk-select" id="">
-                            <option value="30">30 minutes</option>
-                            <option value="45">45 minutes</option>
-                            <option value="60">1 hour</option>
+                            <option value="0:30:00">30 minutes</option>
+                            <option value="0:45:00">45 minutes</option>
+                            <option value="1:00:00">1 hour</option>
                         </select>
                     </div>
                     <button type="submit" class="blue-button">Going there!</button>

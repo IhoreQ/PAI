@@ -880,8 +880,7 @@ input, select {
 }
 
 .dog-photo {
-    background: no-repeat center;
-    background-size: 350px;
+    background: no-repeat center/cover;
     width: 350px;
     height: 350px;
     border-radius: 50px;
@@ -1142,7 +1141,6 @@ input, select {
     position: relative;
     width: 70%;
     height: 30%;
-    background-image: url("/public/img/blonia.jpg");
     background-size: 750px;
     background-position: center;
     background-repeat: no-repeat;
@@ -1180,14 +1178,20 @@ input, select {
     font-weight: 400;
     font-size: 1.5rem;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    width: 50%;
+    text-align: center;
 }
 
 .active-walk-box-header p {
-    padding-right: 1rem;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
-.active-walk-symmetric-p {
+.active-walk-symmetric-p, .active-walk-p {
+    width: 25%;
+    text-align: end;
+}
+
+.active-walk-p {
     padding-right: 1rem;
 }
 
@@ -1244,7 +1248,6 @@ input, select {
     flex-direction: row;
     height: 10%;
     width: 100%;
-
 }
 
 .place-name {
@@ -1258,6 +1261,7 @@ input, select {
     border-radius: 0 0 50px 50px;
     overflow: hidden;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    text-align: center;
 }
 
 .place-return-box {
@@ -1287,9 +1291,8 @@ input, select {
 }
 
 .place-dogs-container {
-    height: 70%;
+    height: 63%;
     width: 80%;
-    margin-top: 3%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -1394,6 +1397,7 @@ input, select {
 .walk-time {
     font-size: 2rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-align: center;
 }
 
 .walk-select {
@@ -1404,4 +1408,64 @@ input, select {
     font-weight: 600;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     outline: none;
+}
+
+.walk-select option {
+    background: #134E5E;
+}
+
+.walk-message {
+    font-size: 1.5rem;
+    left: 50%;
+    color: #F5C9A1;
+    text-shadow: 2px 2px 4px rgb(0 0 0 / 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 7%;
+    width: 100%;
+}
+
+#spinner:not([hidden]) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+#spinner::after {
+    content: "";
+    width: 80px;
+    height: 80px;
+    border: 2px solid #f3f3f3;
+    border-top: 3px solid #f25a41;
+    border-radius: 100%;
+    will-change: transform;
+    animation: spin 1s infinite linear
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.load-cover {
+    position: fixed;
+    opacity: 1;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: #C3B3A6;
+    z-index: 4;
+    transition: 1s all ease-in;
 }

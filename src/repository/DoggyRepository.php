@@ -37,12 +37,14 @@ class DoggyRepository extends Repository {
             }
 
             return new Doggy($doggy['dog_name'], $doggy['age'], $doggy['breed_name'], $gender, $doggy['size_name'], $doggy['description'], $doggy['photo']);
+        } else {
+            return false;
         }
     }
 
     public function addDoggy(Doggy $doggy) {
 
-        if ($doggy->getGender() == "Male")
+        if ($doggy->getGender() == "male")
             $gender = 1;
         else
             $gender = 0;

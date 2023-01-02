@@ -190,6 +190,45 @@
         font-size: 1.3rem;  
         top: -7%;
     }
+
+    .place-dogs-container {
+        width: 100%;
+    }
+
+    .dog-list-header {
+        font-size: 1.5rem;
+    }
+
+    .dog-list {
+        font-size: 1.2rem;
+    }
+
+    .walk-time {
+        font-size: 1.5rem;
+    }
+
+    .dog-count-header {
+        font-size: 2rem;
+    }
+
+    .walk-select {
+        font-size: 1.5rem;
+    }
+
+    .place-name {
+        font-size: 2rem;
+        width: 300px;
+    }
+
+    .place-return-box {
+        width: 75px;
+        font-size: 1.5rem;
+        background: #92420F;
+    }
+
+    .active-walk-box-header {
+        height: 40%;
+    }
 }
 
 /* Phone screen */
@@ -241,16 +280,13 @@
     }
 
     .active-walk-box-header {
-        padding: 0 1.5rem;
+        padding-right: 0.2rem;
         justify-content: space-between;
     }
 
     .active-walk-box-header p {
         padding: 0;
-    }
 
-    .active-walk-symmetric-p {
-        display: none;
     }
 
     .places-footer-ideas {
@@ -280,4 +316,34 @@
     .login-message, .register-message {
         font-size: 1rem;
     }
+
+    .dog-list-header {
+        font-size: 1.3rem;
+    }
+
+    .dog-list {
+        font-size: 1rem;
+    }
+
+    .walk-time {
+        font-size: 1.3rem;
+    }
+
+    .walk-select {
+        font-size: 1.3rem;
+    }
+
+    .place-header {
+        background: #92420F;
+    }
+
+    .place-return-box {
+        border-radius: 0;
+    }
+
+    .place-return-box:hover {
+        background: #ad4f14;
+    }
+
+
 }

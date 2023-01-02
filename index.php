@@ -14,10 +14,14 @@ Routing::post('login', 'SecurityController');
 Routing::post('register', 'SecurityController');
 Routing::post('addDog', 'DogInfoController');
 Routing::post('goForAWalk', 'WalkController');
+Routing::post('newPlaceIdea', 'WalkController');
 
 Routing::get('getUserDogPhoto', 'DogInfoController');
 Routing::get('getIfUserHasDog', 'DogInfoController');
 Routing::get('getPlaceID', 'WalkController');
+Routing::get('isUserOnAWalk', 'WalkController');
+Routing::get('getPlacePhoto', 'WalkController');
+Routing::get('endTheWalk', 'WalkController');
 
 
 Routing::run($path);

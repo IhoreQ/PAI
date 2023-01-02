@@ -51,7 +51,9 @@ class DogInfoController extends AppController {
             $this->doggyRepository->addDoggy($doggy);
         }
 
-        return $this->render("home", ['messages' => $this->messages]);
+        $url = "http://$_SERVER[HTTP_HOST]";
+
+        header("Location: {$url}/home");
     }
 
     private function validate(array $file): bool {

@@ -1,12 +1,15 @@
 <?php
 
 require_once 'Repository.php';
-require_once __DIR__.'/../models/Crypter.php';
-require_once __DIR__.'/../models/Place.php';
+require_once __DIR__ . '/../models/Crypter.php';
+require_once __DIR__ . '/../models/Place.php';
+require_once __DIR__ . '/../models/Walk.php';
 
-class PlaceRepository extends Repository {
+class PlaceRepository extends Repository
+{
 
-    public function getPlace() {
+    public function getPlace()
+    {
 
         $crypter = new Crypter();
         $place_id = $crypter->decryptUserID($_COOKIE['chosen_place']);
@@ -24,7 +27,36 @@ class PlaceRepository extends Repository {
         return new Place($place['name']);
     }
 
-    public function getPlaceID(string $placeName) {
+    public function goForAWalk(Walk $walk) {
+
+        $conn = $this->database->connect();
+        try {
+            $conn->beginTransaction();
+            $stmt = $conn->prepare('INSERT INTO active_walks (id_place, time_of_walk, id_user) VALUES (?, ?, ?)');
+            $stmt->execute([$walk->getPlaceID(), $walk->getApproximateTime(), $walk->getUserID()]);
+            $conn->commit();
+        } catch (PDOException $e) {
+            $conn->rollBack();
+            return null;
+        }
+    }
+
+    public function isUserOnAWalk(int $userID): bool
+    {
+        $stmt = $this->database->connect()->prepare('SELECT * FROM active_walks WHERE id_user = :id');
+        $stmt->bindParam(":id", $userID, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $walk = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($walk)
+            return true;
+        else
+            return false;
+    }
+
+    public function getPlaceID(string $placeName)
+    {
 
         $crypter = new Crypter();
         $placeName .= "%";
@@ -40,20 +72,20 @@ class PlaceRepository extends Repository {
         echo json_encode($placeID);
     }
 
-    public function getDogsHere() {
+    public function getDogsHere(): array
+    {
         $crypter = new Crypter();
 
         $place_id = $crypter->decryptUserID($_COOKIE['chosen_place']);
 
         $stmt = $this->database->connect()->prepare(
-            'SELECT d.name AS dog_name, db.name AS dog_breed, ds.name AS dog_size, age, gender
+            "SELECT aw.id_active_walk, aw.time_of_walk, aw.started_at, time 'now()' as now, d.name AS dog_name, db.name AS dog_breed, ds.name AS dog_size, age, gender
                     FROM dogs d
                         JOIN dogs_breed db on d.id_breed = db.id_dog_breed
-                        JOIN dogs_sizes ds on db.id_dog_size = ds.id_dog_size
+                        JOIN dogs_sizes ds on ds.id_dog_size = db.id_dog_size
                         JOIN users u on d.id_user = u.id_user
-                        JOIN users_details ud on u.id_user = ud.id_user
-                        JOIN active_walks aw on aw.id_active_walk = ud.id_active_walk
-                            WHERE aw.id_place = :id;');
+                        JOIN active_walks aw on u.id_user = aw.id_user
+                            WHERE aw.id_place = :id");
 
         $stmt->bindParam(":id", $place_id);
         $stmt->execute();
@@ -61,9 +93,84 @@ class PlaceRepository extends Repository {
         $dogs = [];
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            array_push($dogs, $row);
+
+            $timeLeft = date("H:i:s", strtotime($row['time_of_walk']) - (strtotime($row['now']) - strtotime($row['started_at'])));
+
+            if ($row['time_of_walk'] < $timeLeft) {
+                $this->deleteActiveWalk($row['id_active_walk']);
+            } else {
+                array_push($dogs, $row);
+            }
         }
 
         return $dogs;
     }
+
+    public function getPlacePhoto() {
+        $crypter = new Crypter();
+        $user_id = $crypter->decryptUserID($_COOKIE['user_enabled']);
+
+        $stmt = $this->database->connect()->prepare('SELECT photo FROM active_walks JOIN places p on p.id_place = active_walks.id_place WHERE id_user = :id');
+        $stmt->bindParam(":id", $user_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $place = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$place) {
+            return null;
+        }
+
+        echo json_encode($place['photo']);
+    }
+
+    public function getActiveWalk() {
+        $crypter = new Crypter();
+        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
+
+        $stmt = $this->database->connect()->prepare("SELECT p.name, p.id_place, time_of_walk, started_at, time 'now()' as now FROM places p JOIN active_walks aw on p.id_place = aw.id_place WHERE id_user = :id");
+        $stmt->bindParam(":id", $userID, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $activeWalk = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$activeWalk) {
+            return null;
+        }
+
+        $timeLeft = date("H:i:s", strtotime($activeWalk['time_of_walk']) - (strtotime($activeWalk['now']) - strtotime($activeWalk['started_at'])));
+
+
+        if ($activeWalk['time_of_walk'] < $timeLeft) {
+            $deleteStmt = $this->database->connect()->prepare('DELETE FROM active_walks WHERE id_user = :id');
+            $deleteStmt->bindParam(":id", $userID, PDO::PARAM_INT);
+            $deleteStmt->execute();
+            return null;
+        }
+
+        $walk = new Walk($userID, $activeWalk['id_place'], $activeWalk['time_of_walk']);
+
+        $walk->setPlaceName($activeWalk['name']);
+        $walk->setTimeLeft($timeLeft);
+
+        return $walk;
+    }
+
+    public function endTheWalk() {
+        $crypter = new Crypter();
+        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
+
+        $stmt = $this->database->connect()->prepare("DELETE FROM public.active_walks WHERE id_user = :id");
+        $stmt->bindParam(":id", $userID, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    private function deleteActiveWalk(int $walkID) {
+        $deleteStmt = $this->database->connect()->prepare('DELETE FROM active_walks WHERE id_active_walk = :id');
+        $deleteStmt->bindParam(":id", $walkID, PDO::PARAM_INT);
+        $deleteStmt->execute();
+    }
+
+    public function addNewPlaceIdea() {
+
+    }
+
 }
