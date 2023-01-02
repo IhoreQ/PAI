@@ -22,6 +22,7 @@ Routing::get('getPlaceID', 'WalkController');
 Routing::get('isUserOnAWalk', 'WalkController');
 Routing::get('getPlacePhoto', 'WalkController');
 Routing::get('endTheWalk', 'WalkController');
+Routing::get('removeDog', 'DogInfoController');
 
 
 Routing::run($path);

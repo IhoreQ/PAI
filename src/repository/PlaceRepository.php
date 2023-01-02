@@ -169,8 +169,20 @@ class PlaceRepository extends Repository
         $deleteStmt->execute();
     }
 
-    public function addNewPlaceIdea() {
+    public function addNewPlaceIdea(Place $place) {
+        $crypter = new Crypter();
+        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
 
+        $conn = $this->database->connect();
+
+        try {
+            $conn->beginTransaction();
+            $stmt = $conn->prepare('INSERT INTO new_places_ideas (city, name, street, id_user) VALUES (?, ?, ?, ?)');
+            $stmt->execute([$place->getCity(), $place->getName(), $place->getStreet(), $userID]);
+            $conn->commit();
+        } catch (PDOException $e) {
+            $conn->rollBack();
+        }
     }
 
 }

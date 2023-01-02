@@ -1,4 +1,6 @@
 let userHasDog;
+const removeDogButton = document.querySelector('.doggy-footer-remove-box');
+const confirmPopUpBox = document.querySelector('.confirm-popup');
 
 function hasDog() {
 
@@ -29,8 +31,16 @@ function getDogPhoto() {
     }));
 }
 
-
+function removeDog() {
+    fetch("/removeDog", {
+        method: "GET"
+    }).then(res => {
+        if (res.ok) {
+            window.location.replace('home');
+        }
+    });
+}
 
 window.addEventListener("load", hasDog);
 window.addEventListener("load", getDogPhoto);
-
+removeDogButton.addEventListener('click', removeDog);

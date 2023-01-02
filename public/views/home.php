@@ -274,6 +274,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="doggy-footer-container">
+                                <div class="doggy-footer-remove-box">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

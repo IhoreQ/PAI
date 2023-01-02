@@ -90,12 +90,15 @@ class WalkController extends AppController {
             return $this->render("home");
         }
 
-        $crypter = new Crypter();
-        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
+        $place = new Place($_POST['place-idea-name']);
+        $place->setCity($_POST['place-idea-city']);
+        $place->setStreet($_POST['place-idea-street']);
 
+        $this->placeRepository->addNewPlaceIdea($place);
 
+        $url = "http://$_SERVER[HTTP_HOST]";
 
-
+        header("Location: {$url}/home");
     }
 
 }

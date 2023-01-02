@@ -183,7 +183,6 @@
 
     .doggy-description-container {
         height: 20%;
-        margin-bottom: 1rem;
     }
 
     .login-message, .register-message {
@@ -345,5 +344,13 @@
         background: #ad4f14;
     }
 
+    .doggy-footer-remove-box {
+        width: 100%;
+        border-radius: 50px 50px 0 0;
+    }
+
+    .doggy-description-container {
+        margin-bottom: 1rem;
+    }
 
 }

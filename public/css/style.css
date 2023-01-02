@@ -815,6 +815,7 @@ input, select {
     height: 10%;
     background-color: #92420F;
     border-radius: 0 0 50px 50px;
+    overflow: hidden;
 }
 
 .doggy-info-container {
@@ -840,6 +841,7 @@ input, select {
     background: #92420F;
     border-radius: 25px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
 }
 
 .upper-box {
@@ -891,14 +893,14 @@ input, select {
 .doggy-name-container h1 {
     font-weight: 500;
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 .doggy-description-container {
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 40%;
+    height: 30%;
 }
 
 .description-box {
@@ -932,6 +934,31 @@ input, select {
     padding: 1rem 0;
     overflow-y: auto;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+.doggy-footer-container {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.doggy-footer-remove-box {
+    width: 100px;
+    height: 100%;
+    font-size: 2rem;
+    background: #134E5E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px 0 0 0;
+    transition: 0.3s background;
+    cursor: pointer;
+}
+
+.doggy-footer-remove-box:hover {
+    background: #155769;
 }
 
 .profile-container {

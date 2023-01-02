@@ -95,4 +95,9 @@ class DogInfoController extends AppController {
         $this->doggyRepository->getIfUserHasDog();
         http_response_code(150);
     }
+
+    public function removeDog() {
+        $this->doggyRepository->removeDog();
+        http_response_code(200);
+    }
 }

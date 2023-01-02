@@ -26,7 +26,6 @@ class DoggyRepository extends Repository {
             $doggy = $statement->fetch(PDO::FETCH_ASSOC);
 
             if (!$doggy) {
-                // TODO rzucenie wyjątku zamiast null
                 return null;
             }
 
@@ -117,5 +116,27 @@ class DoggyRepository extends Repository {
         }
 
         echo json_encode($user['has_dog']);
+    }
+
+    public function removeDog()
+    {
+
+        $crypter = new Crypter();
+        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
+
+        $placeRepo = new PlaceRepository();
+
+        if (!$this->getDoggy() || $placeRepo->isUserOnAWalk($userID)) {
+            return null;
+        }
+
+        $stmt = $this->database->connect()->prepare('DELETE FROM dogs WHERE id_user = :id');
+        $stmt->bindParam(":id", $userID, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $stmt = $this->database->connect()->prepare('UPDATE users SET has_dog = false WHERE id_user = :id');
+        $stmt->bindParam(":id", $userID, PDO::PARAM_INT);
+        $stmt->execute();
+
     }
 }
