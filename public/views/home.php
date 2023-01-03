@@ -287,11 +287,20 @@
                             <div class="password-change-container">
                                 <h1>Change password</h1>
                                 <hr class="separate-bar">
-                                <form action="" class="password-change-form">
-                                    <input type="text" placeholder="Current password">
-                                    <input type="text" placeholder="New password">
-                                    <input type="text" placeholder="Repeat new password">
-                                    <button class="blue-button">Change</button>
+                                <div class="change-password-message">
+                                    <?php
+                                    if(isset($messages)) {
+                                        foreach($messages as $message) {
+                                            echo $message;
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                                <form action="changePassword" method="POST" class="password-change-form">
+                                    <input type="password" name="currentPassword" placeholder="Current password" required>
+                                    <input type="password" name="newPassword" placeholder="New password" required>
+                                    <input type="password" name="repeatedNewPassword" placeholder="Repeat new password" required>
+                                    <button type="submit" class="blue-button">Change</button>
                                 </form>
                             </div>
                             <div class="city-change-container">
@@ -310,8 +319,12 @@
                                 </form>
                             </div>
                         </div>
+                        <div class="settings-footer">
+                            <div class="admin-settings-box">
+                                <i class="fa-solid fa-user-secret"></i>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -324,4 +337,5 @@
     <script src="public/js/dog-info.js"></script>
     <script src="public/js/place-selector.js"></script>
     <script src="public/js/active-walk.js"></script>
+    <script src="public/js/admin-check.js"></script>
 </body>

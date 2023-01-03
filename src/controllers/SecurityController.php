@@ -89,4 +89,45 @@ class SecurityController extends AppController {
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/home");
     }
+
+    public function checkRole() {
+        $userRepository = new UserRepository();
+        echo json_encode($userRepository->getRole());
+        http_response_code(200);
+    }
+
+    public function changePassword() {
+
+        if (!$this->isPost()) {
+            return $this->render("home");
+        }
+
+        $passwordRegex = "/(?=.{8,}).*/";
+
+        $currentPassword = $_POST['currentPassword'];
+        $newPassword = $_POST['newPassword'];
+        $repeatedNewPassword = $_POST['repeatedNewPassword'];
+
+        if (!preg_match($passwordRegex, $newPassword)) {
+            return $this->render('home', ['messages' => ['Password must contain at least 8 characters!']]);
+        }
+
+        if ($newPassword != $repeatedNewPassword) {
+            return $this->render("home", ['messages' => ["Passwords are not the same!"]]);
+        }
+
+        $userRepo = new UserRepository();
+        $userPassword = $userRepo->getUserPassword();
+
+        if (!password_verify($currentPassword, $userPassword)) {
+            return $this->render('home', ['messages' => ['Current password is wrong!']]);
+        }
+
+        $newPassword = password_hash($newPassword, PASSWORD_BCRYPT, ['cost' => 10]);
+
+        $userRepo->changePassword($newPassword);
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/home");
+    }
 }

@@ -185,4 +185,19 @@ class PlaceRepository extends Repository
         }
     }
 
+    public function getPlacesIdeas(): array
+    {
+
+        $stmt = $this->database->connect()->prepare('SELECT * FROM public.new_places_ideas');
+        $stmt->execute();
+
+        $places = [];
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            array_push($places, $row);
+        }
+
+        return $places;
+    }
+
 }

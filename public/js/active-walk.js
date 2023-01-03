@@ -37,15 +37,21 @@ function endTheWalk() {
 
 function decrementSeconds() {
     let time = timeLeft.innerHTML;
+    let hours = parseInt(time.substring(0, 2));
     let minutes = parseInt(time.substring(3,5));
     let seconds = parseInt(time.substring(6, 8));
+
+    if (hours === 1) {
+        minutes = 59;
+        seconds = 59;
+    }
+
     seconds--;
 
     if (minutes === 0 && seconds === 0) {
         clearInterval(interval);
         endTheWalk();
     }
-
 
     if (seconds < 0) {
         minutes--;

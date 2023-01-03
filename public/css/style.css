@@ -969,7 +969,8 @@ input, select {
     display: none;
     width: 100%;
     height: 100%;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .settings-content {
@@ -981,6 +982,31 @@ input, select {
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
+}
+
+.settings-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+}
+
+.admin-settings-box {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    background: #134E5E;
+    border-radius: 50px 0 0 0;
+    width: 100px;
+    height: 100%;
+    cursor: pointer;
+    transition: 0.3s background;
+}
+
+.admin-settings-box:hover {
+    background: #155769;
 }
 
 .password-change-container {
@@ -999,12 +1025,25 @@ input, select {
     margin-bottom: 0.5rem;
 }
 
+.change-password-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    font-size: 1.5rem;
+    width: 100%;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
+}
+
 .password-change-form, .city-change-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+}
+
+.city-change-form {
     margin-top: 1.5rem;
 }
 
@@ -1269,7 +1308,7 @@ input, select {
     align-items: center;
 }
 
-.place-header {
+.place-header, .admin-header {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -1277,7 +1316,7 @@ input, select {
     width: 100%;
 }
 
-.place-name {
+.place-name, .admin-header-title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1291,7 +1330,7 @@ input, select {
     text-align: center;
 }
 
-.place-return-box {
+.place-return-box, .admin-return-box {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1303,7 +1342,7 @@ input, select {
     transition: background 0.3s;
 }
 
-.place-return-box a {
+.place-return-box a, .admin-return-box a {
     text-decoration: none;
     color: #F5C9A1;
     display: flex;
@@ -1313,7 +1352,7 @@ input, select {
     height: 100%;
 }
 
-.place-return-box:hover {
+.place-return-box:hover, .admin-return-box:hover {
     background: #155769;
 }
 
@@ -1338,14 +1377,14 @@ input, select {
     overflow-x: hidden;
 }
 
-.dogs-here-content {
+.dogs-here-content, .new-places-ideas-content {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.dog-count-header {
+.dog-count-header, .new-places-ideas-header {
     width: 100%;
     height: 14%;
     display: flex;
@@ -1354,10 +1393,11 @@ input, select {
     border-radius: 20px 20px 0 0;
     font-size: 2.5rem;
     font-weight: 500;
-    background: #092F39 ;
+    background: #092F39;
+    text-align: center;
 }
 
-.dog-list, .dog-list-header {
+.dog-list, .dog-list-header, .new-places-idea-list-header, .new-places-idea-list {
     position: relative;
     list-style: none;
     display: flex;
@@ -1367,7 +1407,11 @@ input, select {
     padding: 10px 0;
 }
 
-.dog-list::after {
+.new-places-idea-list-header, .new-places-idea-list {
+    justify-content: space-evenly;
+}
+
+.dog-list::after, .new-places-idea-list::after {
     position: absolute;
     width: 90%;
     height: 3px;
@@ -1379,7 +1423,7 @@ input, select {
     border-radius: 50px;
 }
 
-.dog-list-header::after {
+.dog-list-header::after, .new-places-idea-list-header::after {
     position: absolute;
     width: 100%;
     height: 3px;
@@ -1391,12 +1435,12 @@ input, select {
     border-radius: 50px;
 }
 
-.dog-list-header {
+.dog-list-header, .new-places-idea-list-header {
     font-weight: 600;
     font-size: 2rem;
 }
 
-.dog-list li, .dog-list-header li {
+.dog-list li, .dog-list-header li, .new-places-idea-list li, .new-places-idea-list-header li {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1495,4 +1539,29 @@ input, select {
     background: #C3B3A6;
     z-index: 4;
     transition: 1s all ease-in;
+}
+
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.admin-content {
+    display: flex;
+    width: 100%;
+    height: 85%;
+    margin-top: 5%;
+    justify-content: center;
+}
+
+.new-places-ideas-container {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    background: #134E5E;
+    border-radius: 25px 25px 50px 50px;
+    overflow-y: auto;
 }

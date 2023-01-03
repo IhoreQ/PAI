@@ -36,6 +36,24 @@ class UserRepository extends Repository {
         return new User($userDetails['email'], $userDetails['password'], $userDetails['name'], $userDetails['surname']);
     }
 
+    public function getUserPassword() {
+
+        $crypter = new Crypter();
+        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
+
+        $stmt = $this->database->connect()->prepare('SELECT password FROM public.users WHERE id_user = :id');
+        $stmt->bindParam(":id", $userID, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$user) {
+            return null;
+        }
+
+        return $user['password'];
+    }
+
     public function addUser(User $user) {
 
         $conn = $this->database->connect();
@@ -87,4 +105,40 @@ class UserRepository extends Repository {
         return $userInfo['has_dog'];
     }
 
+    public function getRole() {
+        $crypter = new Crypter();
+        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
+
+        $stmt = $this->database->connect()->prepare('SELECT r.id_role FROM public.users JOIN roles r on users.id_role = r.id_role WHERE id_user = :id');
+        $stmt->bindParam(":id", $userID, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$user) {
+            return null;
+        }
+
+        return $user['id_role'];
+    }
+
+    public function changePassword($newPassword) {
+
+        $crypter = new Crypter();
+        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
+
+        $conn = $this->database->connect();
+        try {
+            $conn->beginTransaction();
+
+            $stmt = $conn->prepare('UPDATE public.users SET password = :newPassword WHERE id_user = :id');
+            $stmt->bindParam(":newPassword", $newPassword);
+            $stmt->bindParam(":id", $userID, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $conn->commit();
+        } catch (PDOException $e) {
+            $conn->rollBack();
+        }
+    }
 }

@@ -20,5 +20,9 @@ class DefaultController extends AppController {
         $this->render('place');
     }
 
+    public function adminPanel() {
+        $this->render('adminPanel');
+    }
+
 
 }

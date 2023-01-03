@@ -194,11 +194,11 @@
         width: 100%;
     }
 
-    .dog-list-header {
+    .dog-list-header, .new-places-idea-list-header {
         font-size: 1.5rem;
     }
 
-    .dog-list {
+    .dog-list, .new-places-idea-list {
         font-size: 1.2rem;
     }
 
@@ -206,7 +206,7 @@
         font-size: 1.5rem;
     }
 
-    .dog-count-header {
+    .dog-count-header, .new-places-ideas-header {
         font-size: 2rem;
     }
 
@@ -214,12 +214,12 @@
         font-size: 1.5rem;
     }
 
-    .place-name {
+    .place-name, .admin-header-title {
         font-size: 2rem;
         width: 300px;
     }
 
-    .place-return-box {
+    .place-return-box, .admin-return-box {
         width: 75px;
         font-size: 1.5rem;
         background: #92420F;
@@ -316,11 +316,11 @@
         font-size: 1rem;
     }
 
-    .dog-list-header {
+    .dog-list-header, .new-places-idea-list-header {
         font-size: 1.3rem;
     }
 
-    .dog-list {
+    .dog-list, .new-places-idea-list {
         font-size: 1rem;
     }
 
@@ -332,15 +332,15 @@
         font-size: 1.3rem;
     }
 
-    .place-header {
+    .place-header, .admin-header {
         background: #92420F;
     }
 
-    .place-return-box {
+    .place-return-box, .admin-return-box {
         border-radius: 0;
     }
 
-    .place-return-box:hover {
+    .place-return-box:hover, .admin-return-box:hover {
         background: #ad4f14;
     }
 
