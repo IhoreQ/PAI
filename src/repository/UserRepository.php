@@ -38,8 +38,7 @@ class UserRepository extends Repository {
 
     public function getUserPassword() {
 
-        $crypter = new Crypter();
-        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
+        $userID = $this->crypter->decryptID($_COOKIE['user_enabled']);
 
         $stmt = $this->database->connect()->prepare('SELECT password FROM public.users WHERE id_user = :id');
         $stmt->bindParam(":id", $userID, PDO::PARAM_INT);
@@ -57,10 +56,13 @@ class UserRepository extends Repository {
     public function addUser(User $user) {
 
         $conn = $this->database->connect();
+
         try {
             $conn->beginTransaction();
+
             $stmt = $conn->prepare('INSERT INTO public.users (email, password) VALUES (?, ?)');
             $stmt->execute([$user->getEmail(), $user->getPassword()]);
+
             $conn->commit();
         } catch (PDOException $e) {
             $conn->rollBack();
@@ -71,8 +73,10 @@ class UserRepository extends Repository {
 
         try {
             $conn->beginTransaction();
+
             $stmt = $conn->prepare('INSERT INTO public.users_details (name, surname, id_user) VALUES (?, ?, ?)');
             $stmt->execute([$user->getName(), $user->getSurname(), $userID]);
+
             $conn->commit();
         } catch(PDOException $e) {
             $conn->rollBack();
@@ -81,6 +85,7 @@ class UserRepository extends Repository {
     }
 
     public function getUserID(string $email) {
+
         $stmt = $this->database->connect()->prepare('SELECT * FROM public.users WHERE email = :email');
         $stmt->bindParam(':email', $email);
         $stmt->execute();
@@ -106,8 +111,8 @@ class UserRepository extends Repository {
     }
 
     public function getRole() {
-        $crypter = new Crypter();
-        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
+
+        $userID = $this->crypter->decryptID($_COOKIE['user_enabled']);
 
         $stmt = $this->database->connect()->prepare('SELECT r.id_role FROM public.users JOIN roles r on users.id_role = r.id_role WHERE id_user = :id');
         $stmt->bindParam(":id", $userID, PDO::PARAM_INT);
@@ -124,10 +129,10 @@ class UserRepository extends Repository {
 
     public function changePassword($newPassword) {
 
-        $crypter = new Crypter();
-        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
+        $userID = $this->crypter->decryptID($_COOKIE['user_enabled']);
 
         $conn = $this->database->connect();
+
         try {
             $conn->beginTransaction();
 

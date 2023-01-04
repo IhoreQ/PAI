@@ -4,40 +4,44 @@
     box-sizing: border-box;
 }
 
+:root {
+    --main-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    --main-font-family: 'Dosis', serif;
+}
+
 body {
-    font-family: 'Dosis';
+    font-family: var(--main-font-family);
     color: #F5C9A1;
-    font-size: 16px;   
+    font-size: 16px;
 }
 
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
-  }
+}
   
-  /* Track */
-  ::-webkit-scrollbar-track {
+/* Track */
+::-webkit-scrollbar-track {
     background: none;
-
-  }
+}
   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: #92420F;
     border-radius: 50px;
-  }
+}
   
   /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: #9e4813;
-  }
+}
 
 input, select {
-    font-family: 'Dosis';
+    font-family: var(--main-font-family);
 }
 
 .no-valid {
-    color: #ec1c64 !important;
+    color: #EC1C64 !important;
 }
 
 .main-container {
@@ -49,7 +53,6 @@ input, select {
     justify-content: center;
     align-items: center;
     padding: 2rem;
-    overflow: hidden;
     transition: 0.5s all;
 }
 
@@ -75,7 +78,7 @@ input, select {
     left: 50%;
     transform: translate(-50%, -100%);
     background-color: #92420F;
-    border-radius: 50px 50px 0px 0px;
+    border-radius: 50px 50px 0 0;
     overflow: hidden;
     transition: 0.5s all;
 }
@@ -118,7 +121,7 @@ input, select {
     transform: translateY(-9%);
     color: #F5C9A1;
     font-size: 1.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
 }
 
 .register-message {
@@ -134,7 +137,7 @@ input, select {
     transform: translateY(-9%);
     color: #F5C9A1;
     font-size: 1.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
 }
 
 .blue-button {
@@ -147,7 +150,7 @@ input, select {
     border-radius: 50px;
     background-color: #134E5E;
     color: #F5C9A1;
-    font-family: 'Dosis';
+    font-family: var(--main-font-family);
     font-size: 2.3rem;
     height: 60px;
     font-weight: 600;
@@ -168,13 +171,12 @@ input, select {
 .input-div {
     border-radius: 50px;
     background-color: #F5C9A1;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
     padding-left: 1em;
     color: rgba(114, 42, 4, 0.7);
     font-size: 1.7rem;
     margin-bottom: 2rem;
     height: 60px;
-
 }
 
 .input-div input {
@@ -183,7 +185,7 @@ input, select {
     font-size: 2rem;
     border: none;
     background: none;
-    font-family: 'Dosis';
+    font-family: var(--main-font-family);
     font-weight: 500;
     outline: none;
     color: rgba(114, 42, 4, 1);
@@ -207,22 +209,20 @@ input, select {
     color: #F5C9A1;
     font-size: 1.5rem;
     position: relative;
-    
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
     cursor: pointer;
 }
 
 .forgot-password-text::after {
     content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #F5C9A1;
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-        
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #F5C9A1;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
 .forgot-password-text:hover::after {
@@ -235,7 +235,7 @@ input, select {
     margin-top: 2rem;
     color: #F5C9A1;
     font-size: 1.5rem;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
 }
 
 .sign-up-text a {
@@ -263,16 +263,16 @@ input, select {
 }
 
 .app-cover {
+    display: none;
     position: absolute;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     max-width: 1550px;
     height: 850px;
-    background-color: rgba(0,0,0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 2;
     border-radius: 50px;
-    display: none;
-    justify-content: center;
-    align-items: center;
 }
 
 .app-cover-container {
@@ -305,7 +305,7 @@ input, select {
 
 .app-cover-title h1 {
     font-size: 2.5rem;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
     font-weight: 600;
     text-align: center;
     padding: 0 1rem;
@@ -318,7 +318,7 @@ input, select {
     font-size: 2rem;
     width: 80px;
     height: 80px;
-    background-color:#134E5E;
+    background-color: #134E5E;
     border-radius: 0 50px 0 50px;
     cursor: pointer;
 }
@@ -344,7 +344,7 @@ input, select {
     border-radius: 50px;
     background-color: #134E5E;
     color: #F5C9A1;
-    font-family: 'Dosis';
+    font-family: var(--main-font-family);
     font-size: 2.2rem;
     height: 60px;
     font-weight: 600;
@@ -355,7 +355,7 @@ input, select {
 }
 
 .app-cover-inner-container p {
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
     font-size: 2rem;
     text-align: center;
     margin: 1rem 0;
@@ -367,12 +367,12 @@ input, select {
     background-color: #F5C9A1;
     line-height: 3.5rem;
     width: 100%;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
     padding-left: 1em;
     color: rgba(114, 42, 4, 1);
-    font-family: 'Dosis';
+    font-family: var(--main-font-family);
     font-size: 2rem;
-    margin: 1rem 0 3rem 0;        
+    margin: 1rem 0 3rem 0;
     border: none;
     outline: none;
 }
@@ -380,8 +380,6 @@ input, select {
 .new-place-idea-form input {
     margin-bottom: 1.5rem;
 }
-
-/* Register page */
 
 .register-form {
     position: relative;
@@ -394,14 +392,14 @@ input, select {
     width: 100%;
     border: none;
     background-color: #F5C9A1;
-    font-family: 'Dosis';
+    font-family: var(--main-font-family);
     font-weight: 500;
     outline: none;
     color: rgba(114, 42, 4, 1);
     margin: 0 0 0.7em 0; 
     border-radius: 50px;
     height: 60px;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
     padding-left: 1em;
 }
 
@@ -430,10 +428,10 @@ input, select {
 
 .menu-container {
     position: absolute;
-    width: 20%;
-    height: 100%;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 20%;
     background-color: #92420F;
     border-radius: 50px 0 0 50px;
     transition: 0.3s all;
@@ -444,8 +442,8 @@ input, select {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 15%;
     width: 100%;
+    height: 15%;
     margin-top: 5%;
 }
 
@@ -544,7 +542,7 @@ input, select {
 .menu-bar-element.is-active {
     background-color: #134E5E;
     z-index: 1;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .menu-bar-element.is-active:hover {
@@ -590,6 +588,7 @@ input, select {
     width: 95%;
     height: 80%;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .place-box {
@@ -599,6 +598,8 @@ input, select {
     text-align: center;
     margin: 0 0 2rem 0;
     border-radius: 0 0 50px 50px;
+    cursor: pointer;
+    transition: 0.3s all;
 }
 
 .place-box::after {
@@ -611,7 +612,7 @@ input, select {
     background-color: #F5C9A1;
     mix-blend-mode: color;
     border-radius: 0 0 50px 50px;
-    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 4px rgba(0, 0, 0, 0.3);
 }
 
 .place-text-box {
@@ -630,13 +631,17 @@ input, select {
     font-size: 1.8rem;
     border-radius: 0 0 50px 50px;
     cursor: pointer;
-    transition: 0.3s background;
+    transition: all 0.3s;
     overflow: hidden;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
 }
 
-.place-text-box:hover {
-    background-color: #155769;
+.place-box:hover {
+    transform: scale(1.03);
+}
+
+.place-box:hover .place-text-box {
+    background: #155769;
 }
 
 .places-footer-ideas {
@@ -646,7 +651,7 @@ input, select {
     width: 35%;
     height: 7%;
     border-radius: 50px 50px 0 0;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
     cursor: pointer;
     transition: 0.3s all;
     text-align: center;
@@ -693,7 +698,7 @@ input, select {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     font-weight: 500;
-    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
 }
 
 .new-dog-add-page {
@@ -711,7 +716,7 @@ input, select {
 .new-dog-add-page h1 {
     font-weight: 500;
     font-size: 2.5rem;
-    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
     margin-bottom: 2rem;
 }
 
@@ -738,7 +743,7 @@ input, select {
     height: 75%;
 }
 
-.new-dog-form input {
+.new-dog-form input, .password-change-form input {
     width: 300px;
     background-color: #F5C9A1;
     border: none;
@@ -746,7 +751,7 @@ input, select {
     color: #92420F;
     font-size: 1.5rem;
     border-radius: 50px;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
     padding-left: 1rem;
     height: 60px;
     margin-bottom: 1rem;
@@ -773,7 +778,7 @@ input, select {
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
 }
  
 .new-dog-form .blue-button {
@@ -785,7 +790,7 @@ input, select {
     width: 300px;
     height: 150px;
     border-radius: 10px;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
     font-size: 1.5rem;
     margin-bottom: 1rem;
     background-color: #F5C9A1;  
@@ -793,7 +798,7 @@ input, select {
     outline: none;
     padding-left: 0.2rem;
     color:#92420F;
-    font-family: 'Dosis';
+    font-family: var(--main-font-family);
 }
 
 .my-doggy-content {
@@ -854,7 +859,7 @@ input, select {
     border-radius: 25px 25px 0 0;
     text-align: center;
     font-size: 1.7rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
 }
 
 .lower-box {
@@ -865,7 +870,7 @@ input, select {
     height: 50%;
     background-color: #F5C9A1;
     border-radius: 0 0 25px 25px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
     text-align: center;
 }
 .lower-box p, .description-lower-box p {
@@ -887,7 +892,7 @@ input, select {
     height: 350px;
     border-radius: 50px;
     border: 5px solid #92420F;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
 }
 
 .doggy-name-container h1 {
@@ -917,7 +922,7 @@ input, select {
     border-radius: 25px 25px 0 0;
     text-align: center;
     font-size: 1.7rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
 }
 
 .description-lower-box {
@@ -929,7 +934,7 @@ input, select {
     overflow: hidden;
     background-color: #F5C9A1;
     border-radius: 0 0 25px 25px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
     text-align: center;
     padding: 1rem 0;
     overflow-y: auto;
@@ -945,6 +950,7 @@ input, select {
 }
 
 .doggy-footer-remove-box {
+    position: relative;
     width: 100px;
     height: 100%;
     font-size: 2rem;
@@ -1020,7 +1026,7 @@ input, select {
 
 .password-change-container h1, .city-change-container h1 {
     font-weight: 500;
-    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
 }
@@ -1032,7 +1038,7 @@ input, select {
     height: 50px;
     font-size: 1.5rem;
     width: 100%;
-    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
 }
 
 .password-change-form, .city-change-form {
@@ -1049,20 +1055,6 @@ input, select {
 
 .password-change-form .blue-button, .city-change-form .blue-button {
     width: 300px;
-}
-
-.password-change-form input {
-    width: 300px;
-    background-color: #F5C9A1;
-    border: none;
-    outline: none;
-    color: #92420F;
-    font-size: 1.5rem;
-    border-radius: 50px;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding-left: 1rem;
-    height: 60px;
-    margin-bottom: 1rem;
 }
 
 .city-change-container {
@@ -1087,8 +1079,8 @@ input, select {
     outline: none;
     transition: 0.3s all;
     cursor: pointer;
-    font-family: 'Dosis';
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: var(--main-font-family);
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .city-change-form select:hover, .new-dog-form select:hover, .new-dog-form label:hover {
@@ -1133,7 +1125,7 @@ input, select {
 
 .friends-header h1 {
     font-weight: 500;
-    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
     font-size: 2.7rem;
     margin: 0;
 }
@@ -1163,7 +1155,7 @@ input, select {
     background-color: #134E5E;
     border-radius: 0 0 50px 0;
     font-size: 1.5rem;
-    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
     cursor: pointer;
     transition: 0.3s all;
 }
@@ -1192,7 +1184,7 @@ input, select {
 .active-walk-header h1 {
     font-size: 2.5rem;
     font-weight: 500;
-    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
 }
 
 .active-walk-container {
@@ -1211,7 +1203,7 @@ input, select {
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 0 0 50px 50px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
 }
 
 .active-walk-box.is-active {
@@ -1243,13 +1235,13 @@ input, select {
 .active-walk-box-header h1 {
     font-weight: 400;
     font-size: 1.5rem;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
     width: 50%;
     text-align: center;
 }
 
 .active-walk-box-header p {
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
 }
 
 .active-walk-symmetric-p, .active-walk-p {
@@ -1278,13 +1270,13 @@ input, select {
     left: 50%;
     transform: translate(-50%);
     border-radius: 0 0 50px 50px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     transition: 0.3s background;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
 }
 
 .active-walk-finish h1 {
@@ -1326,7 +1318,7 @@ input, select {
     font-weight: 500;
     border-radius: 0 0 50px 50px;
     overflow: hidden;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    text-shadow: var(--main-text-shadow);
     text-align: center;
 }
 
@@ -1364,7 +1356,7 @@ input, select {
     flex-direction: column;
     background-color: #134E5E;
     border-radius: 20px 20px 50px 50px;
-    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 4px rgba(0, 0, 0, 0.3);
     font-size: 2rem;
 }
 

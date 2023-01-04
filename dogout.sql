@@ -369,205 +369,186 @@ ALTER TABLE public.users ALTER COLUMN id_user ADD GENERATED ALWAYS AS IDENTITY (
 -- Data for Name: active_walks; Type: TABLE DATA; Schema: public; Owner: vgerxvippgozfy
 --
 
-COPY public.active_walks (id_active_walk, id_place, time_of_walk, started_at, id_user) FROM stdin;
-39	4	1:00:00	14:22:02.586727	17
-\.
+INSERT INTO public.active_walks (id_active_walk, id_place, time_of_walk, started_at, id_user) OVERRIDING SYSTEM VALUE VALUES (39, 4, '1:00:00', '14:22:02.586727', 17);
+INSERT INTO public.active_walks (id_active_walk, id_place, time_of_walk, started_at, id_user) OVERRIDING SYSTEM VALUE VALUES (42, 2, '1:00:00', '13:43:52.051154', 22);
 
 
 --
 -- Data for Name: addresses; Type: TABLE DATA; Schema: public; Owner: vgerxvippgozfy
 --
 
-COPY public.addresses (id_address, postal_code, street, city, home_number, country) FROM stdin;
-1	30-198	Zygmunta Starego	1	\N	Poland
-5	31-272	Jana Palacha	1	7	Poland
-6	33-332	Aleja 3 Maja	1	\N	Poland
-4	30-249	Aleja Żubrowa	1	\N	Poland
-\.
+INSERT INTO public.addresses (id_address, postal_code, street, city, home_number, country) OVERRIDING SYSTEM VALUE VALUES (1, '30-198', 'Zygmunta Starego', 1, NULL, 'Poland');
+INSERT INTO public.addresses (id_address, postal_code, street, city, home_number, country) OVERRIDING SYSTEM VALUE VALUES (5, '31-272', 'Jana Palacha', 1, '7', 'Poland');
+INSERT INTO public.addresses (id_address, postal_code, street, city, home_number, country) OVERRIDING SYSTEM VALUE VALUES (6, '33-332', 'Aleja 3 Maja', 1, NULL, 'Poland');
+INSERT INTO public.addresses (id_address, postal_code, street, city, home_number, country) OVERRIDING SYSTEM VALUE VALUES (4, '30-249', 'Aleja Żubrowa', 1, NULL, 'Poland');
 
 
 --
 -- Data for Name: cities; Type: TABLE DATA; Schema: public; Owner: vgerxvippgozfy
 --
 
-COPY public.cities (id_city, name) FROM stdin;
-1	Kraków
-\.
+INSERT INTO public.cities (id_city, name) OVERRIDING SYSTEM VALUE VALUES (1, 'Kraków');
 
 
 --
 -- Data for Name: dogs; Type: TABLE DATA; Schema: public; Owner: vgerxvippgozfy
 --
 
-COPY public.dogs (id_dog, name, age, id_breed, gender, description, photo, id_user) FROM stdin;
-25	Podfruwajek	5	72	t	Piękny piesek.	enrico_dog.JPG	21
-26	Binia	12	81	f	Binia to piękny piesek kochający czekoladę. 🎂	binia.png	17
-\.
+INSERT INTO public.dogs (id_dog, name, age, id_breed, gender, description, photo, id_user) OVERRIDING SYSTEM VALUE VALUES (26, 'Binia', 12, 81, false, 'Binia to piękny piesek kochający czekoladę. 🎂', 'binia.png', 17);
+INSERT INTO public.dogs (id_dog, name, age, id_breed, gender, description, photo, id_user) OVERRIDING SYSTEM VALUE VALUES (27, 'Ciapek', 10, 24, false, 'lubi różnorakie pieski i nie gryzie tylko połyka ', '7557727911579606325-128.png', 22);
 
 
 --
 -- Data for Name: dogs_breed; Type: TABLE DATA; Schema: public; Owner: vgerxvippgozfy
 --
 
-COPY public.dogs_breed (id_dog_breed, name, id_dog_size) FROM stdin;
-43	English Cocker Spaniel	2
-36	Belgian Malinois	3
-35	Mastiff	3
-47	Bichon Frise	1
-26	English Springer Spaniel	2
-5	Poodle	2
-34	Basset Hound	3
-27	Brittany	2
-6	Bulldog	2
-7	Beagle	2
-2	French Bulldog	2
-37	Chihuahua	1
-38	Collie	2
-21	Cane Corso	3
-20	Bernese Mountain Dog	3
-19	Sibierian Huskie	3
-39	Maltese	1
-17	Great Dane	3
-10	Dachshund	1
-16	Doberman Pinscher	3
-33	Pug	1
-25	Havanese	1
-24	Pomeranian	1
-46	West Highland White Terrier	1
-30	Miniature American Shepherd	1
-49	Dalmatian	2
-11	Welsh Corgi Pembroke	2
-40	Weimaraner	3
-41	Rhodesian Ridgeback	3
-23	Boston Terrier	1
-22	Shih Tzu	1
-51	Australian Cattle Dog	2
-13	Yorkshire Terrier	1
-18	Miniature Schnauzers	1
-4	German Shepherd	3
-15	Cavalier King Charles Spaniel	1
-1	Labrador	3
-81	Mongrel	1
-14	Boxer	3
-44	Portuguese Water Dog	2
-12	Australian Shepherd	3
-42	Shiba Inu	2
-45	Newfoundland	3
-9	Pointer	3
-8	Rottweiler	3
-29	Cocker Spaniel	2
-31	Border Collie	2
-28	Shetland Sheepdog	2
-3	Golden Retriever	3
-48	Chesapeake Bay Retriever	3
-50	Bloodhound	3
-32	Vizsla	3
-52	Akita	3
-56	Bullmastiff	3
-65	Giant Schnauzer	3
-64	Chinese Shar-Pei	3
-66	Soft Coated Wheaten Terrier	2
-53	St. Bernard	3
-67	Cardigan Welsh Corgi	2
-72	Russell Terrier	1
-78	Greater Swiss Mountain Dog	3
-79	Lagotti Romagnoli	2
-58	Scottish Terrier	1
-77	Chinese Crested	1
-76	Miniature Pinschers	1
-75	Staffordshire Bull Terrier	2
-68	Alaskan Malamute	3
-73	Italian Greyhound	1
-55	Samoyed	2
-71	Irish Setter	3
-61	Bull Terrier	2
-60	Wirehaired Pointing Griffon	3
-63	Great Pyrenees	3
-62	Airedale Terrier	2
-57	Whippet	2
-54	Papillon	1
-80	Chow Chow	2
-74	Cairn Terrier	1
-59	German Wirehaired Pointer	3
-70	Dogues de Bordeaux	3
-69	Old English Sheepdog	3
-\.
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (43, 'English Cocker Spaniel', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (36, 'Belgian Malinois', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (35, 'Mastiff', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (47, 'Bichon Frise', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (26, 'English Springer Spaniel', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (5, 'Poodle', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (34, 'Basset Hound', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (27, 'Brittany', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (6, 'Bulldog', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (7, 'Beagle', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (2, 'French Bulldog', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (37, 'Chihuahua', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (38, 'Collie', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (21, 'Cane Corso', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (20, 'Bernese Mountain Dog', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (19, 'Sibierian Huskie', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (39, 'Maltese', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (17, 'Great Dane', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (10, 'Dachshund', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (16, 'Doberman Pinscher', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (33, 'Pug', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (25, 'Havanese', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (24, 'Pomeranian', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (46, 'West Highland White Terrier', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (30, 'Miniature American Shepherd', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (49, 'Dalmatian', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (11, 'Welsh Corgi Pembroke', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (40, 'Weimaraner', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (41, 'Rhodesian Ridgeback', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (23, 'Boston Terrier', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (22, 'Shih Tzu', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (51, 'Australian Cattle Dog', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (13, 'Yorkshire Terrier', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (18, 'Miniature Schnauzers', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (4, 'German Shepherd', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (15, 'Cavalier King Charles Spaniel', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (1, 'Labrador', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (81, 'Mongrel', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (14, 'Boxer', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (44, 'Portuguese Water Dog', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (12, 'Australian Shepherd', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (42, 'Shiba Inu', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (45, 'Newfoundland', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (9, 'Pointer', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (8, 'Rottweiler', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (29, 'Cocker Spaniel', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (31, 'Border Collie', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (28, 'Shetland Sheepdog', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (3, 'Golden Retriever', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (48, 'Chesapeake Bay Retriever', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (50, 'Bloodhound', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (32, 'Vizsla', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (52, 'Akita', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (56, 'Bullmastiff', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (65, 'Giant Schnauzer', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (64, 'Chinese Shar-Pei', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (66, 'Soft Coated Wheaten Terrier', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (53, 'St. Bernard', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (67, 'Cardigan Welsh Corgi', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (72, 'Russell Terrier', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (78, 'Greater Swiss Mountain Dog', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (79, 'Lagotti Romagnoli', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (58, 'Scottish Terrier', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (77, 'Chinese Crested', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (76, 'Miniature Pinschers', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (75, 'Staffordshire Bull Terrier', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (68, 'Alaskan Malamute', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (73, 'Italian Greyhound', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (55, 'Samoyed', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (71, 'Irish Setter', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (61, 'Bull Terrier', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (60, 'Wirehaired Pointing Griffon', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (63, 'Great Pyrenees', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (62, 'Airedale Terrier', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (57, 'Whippet', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (54, 'Papillon', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (80, 'Chow Chow', 2);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (74, 'Cairn Terrier', 1);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (59, 'German Wirehaired Pointer', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (70, 'Dogues de Bordeaux', 3);
+INSERT INTO public.dogs_breed (id_dog_breed, name, id_dog_size) OVERRIDING SYSTEM VALUE VALUES (69, 'Old English Sheepdog', 3);
 
 
 --
 -- Data for Name: dogs_sizes; Type: TABLE DATA; Schema: public; Owner: vgerxvippgozfy
 --
 
-COPY public.dogs_sizes (id_dog_size, name) FROM stdin;
-1	Small
-2	Medium
-3	Large
-\.
+INSERT INTO public.dogs_sizes (id_dog_size, name) OVERRIDING SYSTEM VALUE VALUES (1, 'Small');
+INSERT INTO public.dogs_sizes (id_dog_size, name) OVERRIDING SYSTEM VALUE VALUES (2, 'Medium');
+INSERT INTO public.dogs_sizes (id_dog_size, name) OVERRIDING SYSTEM VALUE VALUES (3, 'Large');
 
 
 --
 -- Data for Name: new_places_ideas; Type: TABLE DATA; Schema: public; Owner: vgerxvippgozfy
 --
 
-COPY public.new_places_ideas (id_new_place_idea, city, name, street, id_user) FROM stdin;
-1	Kraków	Park Jordana	Aleja 3 Maja	21
-2	Kraków	Wybieg Jabłonkowska	Jabłonkowska 18	21
-\.
+INSERT INTO public.new_places_ideas (id_new_place_idea, city, name, street, id_user) OVERRIDING SYSTEM VALUE VALUES (1, 'Kraków', 'Park Jordana', 'Aleja 3 Maja', 21);
+INSERT INTO public.new_places_ideas (id_new_place_idea, city, name, street, id_user) OVERRIDING SYSTEM VALUE VALUES (2, 'Kraków', 'Wybieg Jabłonkowska', 'Jabłonkowska 18', 21);
 
 
 --
 -- Data for Name: places; Type: TABLE DATA; Schema: public; Owner: vgerxvippgozfy
 --
 
-COPY public.places (id_place, name, id_address, photo, id_city) FROM stdin;
-1	Błonia	6	krakow-blonia.jpg	1
-2	Młynówka	1	krakow-mlynowka.png	1
-3	Park Krowoderski	5	krakow-park-krowoderski.jpg	1
-4	Lasek Wolski	4	krakow-lasek-wolski.jpg	1
-\.
+INSERT INTO public.places (id_place, name, id_address, photo, id_city) OVERRIDING SYSTEM VALUE VALUES (1, 'Błonia', 6, 'krakow-blonia.jpg', 1);
+INSERT INTO public.places (id_place, name, id_address, photo, id_city) OVERRIDING SYSTEM VALUE VALUES (2, 'Młynówka', 1, 'krakow-mlynowka.png', 1);
+INSERT INTO public.places (id_place, name, id_address, photo, id_city) OVERRIDING SYSTEM VALUE VALUES (3, 'Park Krowoderski', 5, 'krakow-park-krowoderski.jpg', 1);
+INSERT INTO public.places (id_place, name, id_address, photo, id_city) OVERRIDING SYSTEM VALUE VALUES (4, 'Lasek Wolski', 4, 'krakow-lasek-wolski.jpg', 1);
 
 
 --
 -- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: vgerxvippgozfy
 --
 
-COPY public.roles (id_role, role) FROM stdin;
-1	User
-2	Admin
-\.
+INSERT INTO public.roles (id_role, role) OVERRIDING SYSTEM VALUE VALUES (1, 'User');
+INSERT INTO public.roles (id_role, role) OVERRIDING SYSTEM VALUE VALUES (2, 'Admin');
 
 
 --
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: vgerxvippgozfy
 --
 
-COPY public.users (id_user, email, password, created_at, id_role, has_dog) FROM stdin;
-16	ibobek@gmail.com	$2y$10$MBzNEjGUrqz6tUADMXb52eZdZoH6p0w6nJbZWFAwYrEC6pDvmZ6zK	2022-12-29	1	f
-20	bartek@gmail.com	$2y$10$0ve00Qks/2/m8qSTHfnZL..1n1qUnVW9KvntPF7p63TTNc/HtaRd.	2022-12-29	1	f
-21	enrico@gmail.com	$2y$10$JOsJJ/ByNScaF2yHNZjhuurpTd7i9KT.zJbT/01RwJ7vRZLZ4kmku	2023-01-02	2	t
-17	iggi@gmail.com	$2y$10$nC3cthZ1NL0jS7B0QOFaNeNf/63.9J9OXE9y/HudzpwJOd20Yvpwy	2022-12-29	1	t
-18	anzak@gmail.com	$2y$10$60wbVbaAh9L9vHoWayMi6uBSUZ07K7fgsQNq6DwwqYKjtsMag.mEy	2022-12-29	1	f
-\.
+INSERT INTO public.users (id_user, email, password, created_at, id_role, has_dog) OVERRIDING SYSTEM VALUE VALUES (16, 'ibobek@gmail.com', '$2y$10$MBzNEjGUrqz6tUADMXb52eZdZoH6p0w6nJbZWFAwYrEC6pDvmZ6zK', '2022-12-29', 1, false);
+INSERT INTO public.users (id_user, email, password, created_at, id_role, has_dog) OVERRIDING SYSTEM VALUE VALUES (20, 'bartek@gmail.com', '$2y$10$0ve00Qks/2/m8qSTHfnZL..1n1qUnVW9KvntPF7p63TTNc/HtaRd.', '2022-12-29', 1, false);
+INSERT INTO public.users (id_user, email, password, created_at, id_role, has_dog) OVERRIDING SYSTEM VALUE VALUES (17, 'iggi@gmail.com', '$2y$10$nC3cthZ1NL0jS7B0QOFaNeNf/63.9J9OXE9y/HudzpwJOd20Yvpwy', '2022-12-29', 1, true);
+INSERT INTO public.users (id_user, email, password, created_at, id_role, has_dog) OVERRIDING SYSTEM VALUE VALUES (18, 'anzak@gmail.com', '$2y$10$60wbVbaAh9L9vHoWayMi6uBSUZ07K7fgsQNq6DwwqYKjtsMag.mEy', '2022-12-29', 1, false);
+INSERT INTO public.users (id_user, email, password, created_at, id_role, has_dog) OVERRIDING SYSTEM VALUE VALUES (21, 'enrico@gmail.com', '$2y$10$JOsJJ/ByNScaF2yHNZjhuurpTd7i9KT.zJbT/01RwJ7vRZLZ4kmku', '2023-01-02', 2, false);
+INSERT INTO public.users (id_user, email, password, created_at, id_role, has_dog) OVERRIDING SYSTEM VALUE VALUES (22, 'pipi@wp.pl', '$2y$10$aMOMLW/SzbFCGsLq6MAys./od2sfag6yqj7LQG7uRE0y8/wBnM9zK', '2023-01-04', 1, true);
 
 
 --
 -- Data for Name: users_details; Type: TABLE DATA; Schema: public; Owner: vgerxvippgozfy
 --
 
-COPY public.users_details (id_user_details, name, surname, id_user, id_city) FROM stdin;
-9	Igor	Bobek	16	1
-10	Igor	Bobek	17	1
-13	Bartłomiej	Grudziądz	20	1
-11	Anna	Zakrzewska	18	1
-14	Enrico	Łomzik	21	1
-\.
+INSERT INTO public.users_details (id_user_details, name, surname, id_user, id_city) OVERRIDING SYSTEM VALUE VALUES (9, 'Igor', 'Bobek', 16, 1);
+INSERT INTO public.users_details (id_user_details, name, surname, id_user, id_city) OVERRIDING SYSTEM VALUE VALUES (10, 'Igor', 'Bobek', 17, 1);
+INSERT INTO public.users_details (id_user_details, name, surname, id_user, id_city) OVERRIDING SYSTEM VALUE VALUES (13, 'Bartłomiej', 'Grudziądz', 20, 1);
+INSERT INTO public.users_details (id_user_details, name, surname, id_user, id_city) OVERRIDING SYSTEM VALUE VALUES (11, 'Anna', 'Zakrzewska', 18, 1);
+INSERT INTO public.users_details (id_user_details, name, surname, id_user, id_city) OVERRIDING SYSTEM VALUE VALUES (14, 'Enrico', 'Łomzik', 21, 1);
+INSERT INTO public.users_details (id_user_details, name, surname, id_user, id_city) OVERRIDING SYSTEM VALUE VALUES (15, 'Pipek', 'Mały', 22, 1);
 
 
 --
 -- Name: active_walks_id_active_walk_seq; Type: SEQUENCE SET; Schema: public; Owner: vgerxvippgozfy
 --
 
-SELECT pg_catalog.setval('public.active_walks_id_active_walk_seq', 40, true);
+SELECT pg_catalog.setval('public.active_walks_id_active_walk_seq', 42, true);
 
 
 --
@@ -595,7 +576,7 @@ SELECT pg_catalog.setval('public.dogs_breed_id_dog_breed_seq', 117, true);
 -- Name: dogs_id_dog_seq; Type: SEQUENCE SET; Schema: public; Owner: vgerxvippgozfy
 --
 
-SELECT pg_catalog.setval('public.dogs_id_dog_seq', 26, true);
+SELECT pg_catalog.setval('public.dogs_id_dog_seq', 27, true);
 
 
 --
@@ -630,14 +611,14 @@ SELECT pg_catalog.setval('public.roles_id_role_seq', 2, true);
 -- Name: users_details_id_user_details_seq; Type: SEQUENCE SET; Schema: public; Owner: vgerxvippgozfy
 --
 
-SELECT pg_catalog.setval('public.users_details_id_user_details_seq', 14, true);
+SELECT pg_catalog.setval('public.users_details_id_user_details_seq', 15, true);
 
 
 --
 -- Name: users_id_user_seq; Type: SEQUENCE SET; Schema: public; Owner: vgerxvippgozfy
 --
 
-SELECT pg_catalog.setval('public.users_id_user_seq', 21, true);
+SELECT pg_catalog.setval('public.users_id_user_seq', 22, true);
 
 
 --

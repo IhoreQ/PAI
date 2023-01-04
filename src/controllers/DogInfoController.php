@@ -14,7 +14,6 @@ class DogInfoController extends AppController {
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
-    private $messages = [];
     private $doggyRepository;
 
     public function __construct() {
@@ -36,8 +35,7 @@ class DogInfoController extends AppController {
                 return $this->render("home", ['messages' => ["Name is incorrect!"]]);
             }
 
-            //$doggyName = ucfirst(strtolower($_POST['new-dog-name'])); // JAKBY NIE DZIAŁAŁO TO PONIŻEJ
-            $doggyName = $_POST['new-dog-name'];
+            $doggyName = ucfirst(strtolower($_POST['new-dog-name']));
 
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
@@ -49,38 +47,34 @@ class DogInfoController extends AppController {
                                 $_POST['new-dog-size'], $_POST['new-dog-description'], $_FILES['file']['name']);
 
             $this->doggyRepository->addDoggy($doggy);
+
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/home");
         }
-
-        $url = "http://$_SERVER[HTTP_HOST]";
-
-        header("Location: {$url}/home");
     }
 
-    private function validate(array $file): bool {
+    private function validate(array $file) {
 
         if ($file['size'] > self::MAX_FILE_SIZE) {
-            $this->messages[] = "File is too large for destination file system.";
-            return false;
+            return $this->render("home", ['messages' => ["File is too large for destination file system."]]);
         }
 
         if (!isset($file['type']) || !in_array($file['type'], self::SUPPORTED_TYPES)) {
-            $this->messages[] = "File type is not supported.";
-            return false;
+            return $this->render("home", ['messages' => ["File type is not supported."]]);
         }
 
         return true;
     }
 
-    private function hasDog(): bool {
-        $crypter = new Crypter();
-        $user_id = $crypter->decryptUserID($_COOKIE['user_enabled']);
+    private function hasDog() {
 
+        $crypter = new Crypter();
+        $userID = $crypter->decryptID($_COOKIE['user_enabled']);
 
         $userRepository = new UserRepository();
 
-        if ($userRepository->hasDog($user_id)) {
-            $this->messages[] = "You already have a doggy!";
-            return true;
+        if ($userRepository->hasDog($userID)) {
+            return $this->render("home", ['messages' => ["You already have a doggy!"]]);
         }
 
         return false;

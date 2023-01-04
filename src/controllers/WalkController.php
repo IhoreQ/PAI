@@ -27,8 +27,8 @@ class WalkController extends AppController {
         $walkTime = $_POST['walk-time'];
 
         $crypter = new Crypter();
-        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
-        $placeID = $crypter->decryptUserID($_COOKIE['chosen_place']);
+        $userID = $crypter->decryptID($_COOKIE['user_enabled']);
+        $placeID = $crypter->decryptID($_COOKIE['chosen_place']);
 
         $doggyRepo = new DoggyRepository();
         $dog = $doggyRepo->getDoggy();
@@ -61,7 +61,7 @@ class WalkController extends AppController {
 
     public function isUserOnAWalk() {
         $crypter = new Crypter();
-        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
+        $userID = $crypter->decryptID($_COOKIE['user_enabled']);
 
         $onAWalk = $this->placeRepository->isUserOnAWalk($userID);
 

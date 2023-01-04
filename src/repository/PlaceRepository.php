@@ -8,11 +8,8 @@ require_once __DIR__ . '/../models/Walk.php';
 class PlaceRepository extends Repository
 {
 
-    public function getPlace()
-    {
-
-        $crypter = new Crypter();
-        $place_id = $crypter->decryptUserID($_COOKIE['chosen_place']);
+    public function getPlace() {
+        $place_id = $this->crypter->decryptID($_COOKIE['chosen_place']);
 
         $stmt = $this->database->connect()->prepare('SELECT * FROM public.places WHERE id_place = :id');
         $stmt->bindParam(":id", $place_id, PDO::PARAM_INT);
@@ -30,6 +27,7 @@ class PlaceRepository extends Repository
     public function goForAWalk(Walk $walk) {
 
         $conn = $this->database->connect();
+
         try {
             $conn->beginTransaction();
             $stmt = $conn->prepare('INSERT INTO active_walks (id_place, time_of_walk, id_user) VALUES (?, ?, ?)');
@@ -55,10 +53,7 @@ class PlaceRepository extends Repository
             return false;
     }
 
-    public function getPlaceID(string $placeName)
-    {
-
-        $crypter = new Crypter();
+    public function getPlaceID(string $placeName) {
         $placeName .= "%";
 
         $stmt = $this->database->connect()->prepare('SELECT * FROM public.places WHERE photo LIKE :name');
@@ -67,16 +62,14 @@ class PlaceRepository extends Repository
 
         $place = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        $placeID = $this->crypter->encryptID($place['id_place']);
 
-        $placeID = $crypter->encryptUserID($place['id_place']);
         echo json_encode($placeID);
     }
 
-    public function getDogsHere(): array
-    {
-        $crypter = new Crypter();
+    public function getDogsHere(): array {
 
-        $place_id = $crypter->decryptUserID($_COOKIE['chosen_place']);
+        $place_id = $this->crypter->decryptID($_COOKIE['chosen_place']);
 
         $stmt = $this->database->connect()->prepare(
             "SELECT aw.id_active_walk, aw.time_of_walk, aw.started_at, time 'now()' as now, d.name AS dog_name, db.name AS dog_breed, ds.name AS dog_size, age, gender
@@ -107,8 +100,7 @@ class PlaceRepository extends Repository
     }
 
     public function getPlacePhoto() {
-        $crypter = new Crypter();
-        $user_id = $crypter->decryptUserID($_COOKIE['user_enabled']);
+        $user_id = $this->crypter->decryptID($_COOKIE['user_enabled']);
 
         $stmt = $this->database->connect()->prepare('SELECT photo FROM active_walks JOIN places p on p.id_place = active_walks.id_place WHERE id_user = :id');
         $stmt->bindParam(":id", $user_id, PDO::PARAM_INT);
@@ -123,8 +115,7 @@ class PlaceRepository extends Repository
     }
 
     public function getActiveWalk() {
-        $crypter = new Crypter();
-        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
+        $userID = $this->crypter->decryptID($_COOKIE['user_enabled']);
 
         $stmt = $this->database->connect()->prepare("SELECT p.name, p.id_place, time_of_walk, started_at, time 'now()' as now FROM places p JOIN active_walks aw on p.id_place = aw.id_place WHERE id_user = :id");
         $stmt->bindParam(":id", $userID, PDO::PARAM_INT);
@@ -155,8 +146,7 @@ class PlaceRepository extends Repository
     }
 
     public function endTheWalk() {
-        $crypter = new Crypter();
-        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
+        $userID = $this->crypter->decryptID($_COOKIE['user_enabled']);
 
         $stmt = $this->database->connect()->prepare("DELETE FROM public.active_walks WHERE id_user = :id");
         $stmt->bindParam(":id", $userID, PDO::PARAM_INT);
@@ -170,8 +160,7 @@ class PlaceRepository extends Repository
     }
 
     public function addNewPlaceIdea(Place $place) {
-        $crypter = new Crypter();
-        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
+        $userID = $this->crypter->decryptID($_COOKIE['user_enabled']);
 
         $conn = $this->database->connect();
 

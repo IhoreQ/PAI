@@ -83,7 +83,7 @@ class SecurityController extends AppController {
         $crypter = new Crypter();
 
         $cookie_name = "user_enabled";
-        $cookie_value = $crypter->encryptUserID($userRepository->getUserID($user->getEmail()));
+        $cookie_value = $crypter->encryptID($userRepository->getUserID($user->getEmail()));
         setcookie($cookie_name, $cookie_value, 0, '/');
 
         $url = "http://$_SERVER[HTTP_HOST]";

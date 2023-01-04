@@ -1,27 +1,19 @@
 #krakow-blonia {
-    background: url('/public/img/places/krakow-blonia.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
+    background: url('/public/img/places/krakow-blonia.jpg') no-repeat center;
     background-size: 500px;
 }
 
 #krakow-mlynowka {
-    background: url('/public/img/places/krakow-mlynowka.png');
-    background-repeat: no-repeat;
-    background-position: center;
+    background: url('/public/img/places/krakow-mlynowka.png') no-repeat center;
     background-size: 500px;
 }
 
 #krakow-lasek-wolski {
-    background: url('/public/img/places/krakow-lasek-wolski.jpg');
-    background-repeat: no-repeat;
-    background-position: bottom;
+    background: url('/public/img/places/krakow-lasek-wolski.jpg') no-repeat bottom;
     background-size: 500px;
 }
 
 #krakow-park-krowoderski {
-    background: url('/public/img/places/krakow-park-krowoderski.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
+    background: url('/public/img/places/krakow-park-krowoderski.jpg') no-repeat center;
     background-size: 500px;
 }

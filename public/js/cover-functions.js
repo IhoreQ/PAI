@@ -31,13 +31,12 @@ fileUpload.addEventListener("change", function() {
 function loadData() {
     spinner.removeAttribute('hidden');
     fetch('https://www.mocky.io/v2/5185415ba171ea3a00704eed?mocky-delay=1000ms')
-        .then(response => response.json())
-        .then(data => {
+        .then(() => {
             spinner.setAttribute('hidden', '');
             loadCover.style.opacity = "0";
             setTimeout(function () {
                 loadCover.style.display = "none";
-            }, 1000)
+            }, 1000);
         });
 }
 

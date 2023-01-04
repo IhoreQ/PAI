@@ -9,8 +9,7 @@ class DoggyRepository extends Repository {
     public function getDoggy() {
 
         // Pobranie psa
-        $crypter = new Crypter();
-        $user_id = $crypter->decryptUserID($_COOKIE['user_enabled']);
+        $user_id = $this->crypter->decryptID($_COOKIE['user_enabled']);
 
         $stmt = $this->database->connect()->prepare('SELECT * FROM users WHERE id_user = :id');
         $stmt->bindParam(":id", $user_id, PDO::PARAM_INT);
@@ -55,8 +54,7 @@ class DoggyRepository extends Repository {
         $statement->execute();
         $breed_info = $statement->fetch(PDO::FETCH_ASSOC);
 
-        $crypter = new Crypter();
-        $user_id = $crypter->decryptUserID($_COOKIE['user_enabled']);
+        $user_id = $this->crypter->decryptID($_COOKIE['user_enabled']);
 
         $statement = $this->database->connect()->prepare(
             'INSERT INTO dogs (name, age, id_breed, gender, description, photo, id_user) VALUES (?, ?, ?, ?, ?, ?, ?)'
@@ -87,8 +85,7 @@ class DoggyRepository extends Repository {
     }
 
     public function getUserDogPhoto() {
-        $crypter = new Crypter();
-        $user_id = $crypter->decryptUserID($_COOKIE['user_enabled']);
+        $user_id = $this->crypter->decryptID($_COOKIE['user_enabled']);
 
         $stmt = $this->database->connect()->prepare('SELECT * FROM dogs WHERE id_user = :id');
         $stmt->bindParam(":id", $user_id, PDO::PARAM_INT);
@@ -103,8 +100,7 @@ class DoggyRepository extends Repository {
     }
 
     public function getIfUserHasDog() {
-        $crypter = new Crypter();
-        $user_id = $crypter->decryptUserID($_COOKIE['user_enabled']);
+        $user_id = $this->crypter->decryptID($_COOKIE['user_enabled']);
 
         $stmt = $this->database->connect()->prepare('SELECT * FROM users WHERE id_user = :id');
         $stmt->bindParam(":id", $user_id, PDO::PARAM_INT);
@@ -121,8 +117,7 @@ class DoggyRepository extends Repository {
     public function removeDog()
     {
 
-        $crypter = new Crypter();
-        $userID = $crypter->decryptUserID($_COOKIE['user_enabled']);
+        $userID = $this->crypter->decryptID($_COOKIE['user_enabled']);
 
         $placeRepo = new PlaceRepository();
 

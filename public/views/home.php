@@ -201,8 +201,8 @@
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                     </select>
-                                    <textarea name="new-dog-description" class="new-dog-textarea" cols="30" rows="10" placeholder="Description"></textarea>
-                                    <input id="file-upload" type="file" name="file" hidden>
+                                    <textarea name="new-dog-description" class="new-dog-textarea" cols="30" rows="10" placeholder="Description" required></textarea>
+                                    <input id="file-upload" type="file" name="file" hidden required>
                                     <label for="file-upload" class="dog-photo-upload">
                                         <i class="fa fa-cloud-upload"></i>
                                         <span id="file-chosen">Upload dog photo</span>

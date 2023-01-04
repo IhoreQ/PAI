@@ -1,6 +1,5 @@
 let userHasDog;
 const removeDogButton = document.querySelector('.doggy-footer-remove-box');
-const confirmPopUpBox = document.querySelector('.confirm-popup');
 
 function hasDog() {
 
